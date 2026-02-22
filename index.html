@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>ZRA Vehicle Import Duty Estimator – Zambia 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --green: #00c853;
+    --green-dim: #007a35;
+    --green-dark: #004d20;
+    --gold: #f5c842;
+    --red: #e63946;
+    --orange: #ff8c00;
+    --bg: #080d08;
+    --surface: #0f160f;
+    --surface2: #172017;
+    --border: #243324;
+    --text: #e2ede2;
+    --muted: #6b8f6b;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --display: 'Bebas Neue', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,200,83,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,200,83,0.025) 1px, transparent 1px);
+    background-size: 36px 36px;
+    pointer-events: none; z-index: 0;
+  }
+  .app { position: relative; z-index: 1; max-width: 480px; margin: 0 auto; padding-bottom: 48px; }
+
+  /* ── HEADER ── */
+  header {
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .logo-mark {
+    width: 46px; height: 46px;
+    background: var(--green);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .logo-mark svg { width: 28px; height: 28px; fill: var(--bg); }
+  .logo-text h1 { font-family: var(--display); font-size: 20px; letter-spacing: 2px; color: var(--green); line-height: 1; }
+  .logo-text p { font-size: 10px; color: var(--muted); font-family: var(--mono); letter-spacing: 0.5px; margin-top: 2px; }
+
+  /* ── STEP BAR ── */
+  .step-bar { display: flex; gap: 4px; padding: 14px 20px 0; }
+  .step-seg { height: 3px; flex: 1; background: var(--border); border-radius: 2px; transition: background 0.35s; }
+  .step-seg.active { background: var(--green); }
+  .step-seg.done { background: var(--green-dim); }
+
+  /* ── SCREENS ── */
+  .screen { display: none; padding: 22px 20px; }
+  .screen.on { display: block; animation: slideIn 0.28s ease; }
+  @keyframes slideIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+  .stitle { font-family: var(--display); font-size: 34px; letter-spacing: 2.5px; line-height: 1; color: var(--text); }
+  .ssub { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.8px; margin: 4px 0 22px; }
+
+  /* ── FORM ELEMENTS ── */
+  .field { margin-bottom: 16px; }
+  label {
+    display: block; font-family: var(--mono); font-size: 10px; letter-spacing: 1.2px;
+    color: var(--green); text-transform: uppercase; margin-bottom: 6px;
+  }
+  label .req { color: var(--red); }
+  select, input {
+    width: 100%; background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 6px; color: var(--text); font-family: var(--mono); font-size: 14px;
+    padding: 11px 14px; outline: none; transition: border-color 0.2s;
+    -webkit-appearance: none; appearance: none;
+  }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%236b8f6b' d='M5 6L0 0h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
+  }
+  select:focus, input:focus { border-color: var(--green); }
+  input::placeholder { color: var(--muted); }
+  .hint { font-size: 11px; color: var(--muted); font-family: var(--mono); margin-top: 5px; line-height: 1.5; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .two-col .field { margin-bottom: 0; }
+
+  .igroup { display: flex; align-items: center; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; transition: border-color 0.2s; }
+  .igroup:focus-within { border-color: var(--green); }
+  .igroup input { border: none; background: transparent; flex: 1; border-radius: 0; }
+  .iunit { padding: 11px 12px; font-family: var(--mono); font-size: 11px; color: var(--muted); background: var(--border); }
+
+  /* ── BUTTONS ── */
+  .btn {
+    width: 100%; padding: 14px; border-radius: 8px; font-family: var(--display);
+    font-size: 22px; letter-spacing: 2px; cursor: pointer; border: none;
+    transition: all 0.18s; margin-top: 6px;
+  }
+  .btn-primary { background: var(--green); color: var(--bg); }
+  .btn-primary:hover { background: #00df5e; transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: var(--green); border: 1px solid var(--green-dim); }
+  .btn-outline:hover { background: rgba(0,200,83,0.07); }
+  .btn-cast { background: #7c3aed; color: #fff; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .btn-cast:hover { background: #6d28d9; transform: translateY(-1px); }
+  .cast-icon { width: 22px; height: 22px; }
+
+  /* ── INFO BOXES ── */
+  .ibox { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 16px; font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .ibox strong { color: var(--text); }
+  .ibox.gold { border-color: rgba(245,200,66,0.25); }
+  .ibox.gold .ibox-title { color: var(--gold); font-family: var(--mono); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+
+  /* ── RESULTS ── */
+  .result-wrap { background: var(--surface); border: 1px solid var(--green-dim); border-radius: 12px; overflow: hidden; margin-bottom: 14px; }
+  .result-top { background: var(--green-dark); padding: 14px 16px; display: flex; justify-content: space-between; align-items: flex-start; }
+  .result-top-left .label-sm { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.55); letter-spacing: 1px; text-transform: uppercase; }
+  .result-top-left .hs { font-family: var(--mono); font-size: 13px; color: var(--gold); font-weight: 600; margin-top: 3px; }
+  .result-top-left .desc { font-family: var(--sans); font-size: 12px; color: rgba(255,255,255,0.75); margin-top: 2px; line-height: 1.4; max-width: 220px; }
+  .age-badge { background: rgba(0,0,0,0.35); border-radius: 6px; padding: 6px 12px; text-align: center; flex-shrink: 0; }
+  .age-badge .ab-num { font-family: var(--display); font-size: 26px; color: var(--green); line-height: 1; }
+  .age-badge .ab-label { font-family: var(--mono); font-size: 9px; color: var(--muted); letter-spacing: 0.5px; }
+
+  .duty-table { width: 100%; }
+  .drow { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; border-bottom: 1px solid var(--border); }
+  .drow:last-child { border-bottom: none; }
+  .drow .dlabel { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .drow .damt { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--text); text-align: right; }
+  .drow .damt small { display: block; font-size: 10px; color: var(--muted); font-weight: 400; }
+  .drow.highlight .dlabel { color: var(--text); }
+  .drow.highlight .damt { color: var(--gold); }
+
+  .total-bar { background: rgba(0,200,83,0.07); border-top: 2px solid var(--green-dim); padding: 16px; display: flex; justify-content: space-between; align-items: center; }
+  .total-bar .tlabel { font-family: var(--display); font-size: 22px; letter-spacing: 1px; color: var(--muted); }
+  .total-bar .tamt { font-family: var(--display); font-size: 32px; color: var(--green); letter-spacing: 1px; }
+
+  .carbon-box { background: rgba(255,140,0,0.07); border: 1px solid rgba(255,140,0,0.25); border-radius: 8px; padding: 12px 14px; margin-bottom: 14px; }
+  .carbon-box .ct { font-family: var(--mono); font-size: 11px; color: var(--orange); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .carbon-box p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .carbon-box strong { color: var(--orange); }
+
+  .spec-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .chip { background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 4px 10px; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .chip strong { color: var(--text); }
+
+  .disc { background: rgba(230,57,70,0.07); border: 1px solid rgba(230,57,70,0.2); border-radius: 8px; padding: 12px 14px; margin-top: 16px; font-size: 11px; font-family: var(--mono); color: #e08080; line-height: 1.7; }
+  .disc strong { color: var(--red); }
+
+  /* ── TOAST ── */
+  .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--green); color: var(--bg); font-family: var(--mono); font-size: 13px; font-weight: 600; padding: 10px 22px; border-radius: 8px; transition: transform 0.3s; z-index: 9999; white-space: nowrap; }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ── WELCOME HERO ── */
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+  .hero-stat { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; }
+  .hero-stat .hs-n { font-family: var(--display); font-size: 28px; color: var(--green); letter-spacing: 1px; line-height: 1; }
+  .hero-stat .hs-l { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.5px; margin-top: 4px; }
+
+  select option { background: #172017; }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header>
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+    </div>
+    <div class="logo-text">
+      <h1>ZRA DUTY CALC</h1>
+      <p>USED VEHICLE IMPORT ESTIMATOR · ZAMBIA 2025</p>
+    </div>
+  </header>
+
+  <div class="step-bar" id="stepBar">
+    <div class="step-seg active" id="seg0"></div>
+    <div class="step-seg" id="seg1"></div>
+    <div class="step-seg" id="seg2"></div>
+    <div class="step-seg" id="seg3"></div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       SCREEN 0 — WELCOME
+  ════════════════════════════════════════════ -->
+  <div class="screen on" id="s0">
+    <br/>
+    <div class="stitle">VEHICLE<br/>IMPORT<br/>DUTY</div>
+    <p class="ssub">// ZRA SPECIFIC DUTY RATES 2025</p>
+
+    <div class="hero-grid">
+      <div class="hero-stat">
+        <div class="hs-n">2025</div>
+        <div class="hs-l">TARIFF EDITION</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-n">87.02<br/>87.03<br/>87.04</div>
+        <div class="hs-l">HS CODE CHAPTERS</div>
+      </div>
+    </div>
+
+    <div class="ibox">
+      ZRA uses <strong>specific (flat) duty rates</strong> per vehicle — not a simple percentage. Each vehicle is assigned a fixed total tax based on its type, age, engine size, and other specs.<br/><br/>
+      This tool does the classification for you and gives you the <strong>official 2025 figure</strong>.
+    </div>
+
+    <div class="ibox gold">
+      <div class="ibox-title">⚡ What's included in the total</div>
+      Customs Duty · Excise Duty · VAT · Customs Processing Fee · Motor Vehicle Fee · Motor Vehicle Surtax
+      <br/><br/>
+      <strong style="color:var(--orange)">Note:</strong> Carbon Emission Surtax is calculated separately and shown additionally.
+    </div>
+
+    <button class="btn btn-primary" onclick="go(1)">START — ENTER VEHICLE DETAILS</button>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       SCREEN 1 — VEHICLE SPECS
+  ════════════════════════════════════════════ -->
+  <div class="screen" id="s1">
+    <div class="stitle">VEHICLE<br/>SPECS</div>
+    <p class="ssub">// STEP 1 OF 3</p>
+
+    <div class="field">
+      <label>HS Chapter / Vehicle Category <span class="req">*</span></label>
+      <select id="category" onchange="onCategoryChange()">
+        <option value="">— Select vehicle category —</option>
+        <optgroup label="87.02 — Passenger (10+ persons)">
+          <option value="8702_diesel">Bus / Minibus — Diesel or Semi-diesel</option>
+          <option value="8702_other">Bus / Minibus — Other engine (petrol etc.)</option>
+        </optgroup>
+        <optgroup label="87.03 — Passenger Cars (under 10 persons)">
+          <option value="8703_petrol_sedan">Sedan — Petrol / Spark-ignition</option>
+          <option value="8703_petrol_hatch">Hatchback — Petrol / Spark-ignition</option>
+          <option value="8703_petrol_wagon">Station Wagon — Petrol / Spark-ignition</option>
+          <option value="8703_petrol_suv">SUV / 4x4 — Petrol / Spark-ignition</option>
+          <option value="8703_diesel_sedan">Sedan — Diesel / Compression-ignition</option>
+          <option value="8703_diesel_hatch">Hatchback — Diesel / Compression-ignition</option>
+          <option value="8703_diesel_wagon">Station Wagon — Diesel / Compression-ignition</option>
+          <option value="8703_diesel_suv">SUV / 4x4 — Diesel / Compression-ignition</option>
+        </optgroup>
+        <optgroup label="87.04 — Goods Vehicles">
+          <option value="8704_diesel_sc">Single Cab Pickup — Diesel</option>
+          <option value="8704_diesel_dc">Double Cab Pickup — Diesel</option>
+          <option value="8704_diesel_pv">Panel Van — Diesel</option>
+          <option value="8704_diesel_truck">Truck / Lorry — Diesel</option>
+          <option value="8704_petrol_sc">Single Cab Pickup — Petrol</option>
+          <option value="8704_petrol_dc">Double Cab Pickup — Petrol</option>
+          <option value="8704_petrol_pv">Panel Van — Petrol</option>
+          <option value="8704_petrol_truck">Truck / Lorry — Petrol</option>
+          <option value="8704_hybrid_sc">Single Cab Pickup — Hybrid</option>
+          <option value="8704_hybrid_dc">Double Cab Pickup — Hybrid</option>
+          <option value="8704_hybrid_pv">Panel Van — Hybrid</option>
+          <option value="8704_hybrid_truck">Truck / Lorry — Hybrid</option>
+        </optgroup>
+        <optgroup label="87.11 — Motorcycles">
+          <option value="8711_moto">Motorcycle / Motorbike</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <!-- Engine CC (for 8703) -->
+    <div class="field" id="fld_cc" style="display:none">
+      <label>Engine Displacement <span class="req">*</span></label>
+      <div class="igroup">
+        <input type="number" id="engineCC" placeholder="e.g. 1800" min="50" max="10000"/>
+        <span class="iunit">CC</span>
+      </div>
+      <p class="hint">// Enter in cubic centimetres. This determines your HS sub-heading.</p>
+    </div>
+
+    <!-- Seat capacity (for 8702 buses) -->
+    <div class="field" id="fld_seats" style="display:none">
+      <label>Seating Capacity (including driver) <span class="req">*</span></label>
+      <select id="seatCap">
+        <option value="">— Select —</option>
+        <option value="le14">Up to 14 seats (≤14)</option>
+        <option value="15to32">15 to 32 seats</option>
+        <option value="33to44">33 to 44 seats</option>
+        <option value="gt44">More than 44 seats</option>
+      </select>
+    </div>
+
+    <!-- GVW (for 8704 goods vehicles) -->
+    <div class="field" id="fld_gvw" style="display:none">
+      <label>Gross Vehicle Weight (GVW) <span class="req">*</span></label>
+      <select id="gvw">
+        <option value="">— Select GVW —</option>
+        <option value="le1">Not exceeding 1 tonne (panel van only)</option>
+        <option value="1to1.5">Exceeding 1t but not exceeding 1.5 tonnes</option>
+        <option value="1.5to3">Exceeding 1.5t but not exceeding 3 tonnes</option>
+        <option value="le3_dc">Not exceeding 3 tonnes (double cab)</option>
+        <option value="3to5">Exceeding 3t but not exceeding 5 tonnes</option>
+        <option value="5to10">Exceeding 5t but not exceeding 10 tonnes (trucks only)</option>
+        <option value="10to20">Exceeding 10t but not exceeding 20 tonnes (trucks only)</option>
+        <option value="gt20">Exceeding 20 tonnes (trucks only)</option>
+      </select>
+    </div>
+
+    <!-- Motorcycle engine band -->
+    <div class="field" id="fld_moto_cc" style="display:none">
+      <label>Motorcycle Engine Size <span class="req">*</span></label>
+      <select id="motoCC">
+        <option value="">— Select —</option>
+        <option value="le50">Up to 50cc</option>
+        <option value="50to250">51cc to 250cc</option>
+        <option value="250to500">251cc to 500cc</option>
+        <option value="500to800">501cc to 800cc</option>
+        <option value="gt800">Over 800cc</option>
+        <option value="other">Other / Sidecar type</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Year of Manufacture <span class="req">*</span></label>
+      <select id="yearMfg">
+        <option value="">— Select year —</option>
+      </select>
+      <p class="hint" id="ageHint">// Determines whether Part I (2–5 yrs) or Part II (5+ yrs) rates apply</p>
+    </div>
+
+    <div class="ibox" style="margin-top:4px">
+      <strong style="color:var(--gold)">Note on Hybrid vehicles:</strong> ZRA's specific duty rates do <strong>not</strong> apply to hybrid vehicles (Note 2 of the tariff guide). For hybrids, please consult a ZRA clearing agent for the applicable ad-valorem duty.
+    </div>
+
+    <button class="btn btn-primary" onclick="go(2)">NEXT: REVIEW &amp; CALCULATE</button>
+    <button class="btn btn-outline" onclick="go(0)" style="margin-top:8px">BACK</button>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       SCREEN 2 — CONFIRM
+  ════════════════════════════════════════════ -->
+  <div class="screen" id="s2">
+    <div class="stitle">CONFIRM<br/>DETAILS</div>
+    <p class="ssub">// STEP 2 OF 3 — REVIEW BEFORE CALCULATING</p>
+
+    <div id="confirmBox" class="ibox"></div>
+
+    <div class="ibox gold">
+      <div class="ibox-title">📌 How specific duties work</div>
+      The ZRA 2025 tariff assigns a <strong>single flat ZMW amount</strong> per vehicle unit. This total already factors in customs duty, excise, VAT, processing fees, and vehicle surcharges. You pay that amount per vehicle, regardless of its purchase price.
+    </div>
+
+    <button class="btn btn-primary" onclick="calculate()">CALCULATE MY DUTY</button>
+    <button class="btn btn-outline" onclick="go(1)" style="margin-top:8px">EDIT DETAILS</button>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       SCREEN 3 — RESULTS
+  ════════════════════════════════════════════ -->
+  <div class="screen" id="s3">
+    <div class="stitle">DUTY<br/>RESULT</div>
+    <p class="ssub">// STEP 3 OF 3 — 2025 ZRA SPECIFIC DUTY RATE</p>
+
+    <div class="spec-row" id="specChips"></div>
+
+    <div class="result-wrap" id="resultWrap">
+      <div class="result-top">
+        <div class="result-top-left">
+          <div class="label-sm">HS CODE</div>
+          <div class="hs" id="r_hscode">—</div>
+          <div class="desc" id="r_desc">—</div>
+        </div>
+        <div class="age-badge">
+          <div class="ab-num" id="r_age">—</div>
+          <div class="ab-label">YRS OLD</div>
+        </div>
+      </div>
+
+      <div class="duty-table">
+        <div class="drow highlight">
+          <span class="dlabel">Part / Age Band</span>
+          <span class="damt" id="r_part">—</span>
+        </div>
+        <div class="drow">
+          <span class="dlabel">Customs Duty</span>
+          <span clas
