@@ -34,7 +34,7 @@
       text-align:center;
     }
     .sel-btn:hover { border-color:#93c5fd; background:#f0f9ff; }
-    .sel-btn.active { border-color:#2563eb; background:#eff6ff; color:#1d4ed8; font-weight:600; }
+    .sel-btn.active { border-color:#2563eb !important; background:#eff6ff !important; color:#1d4ed8 !important; font-weight:600 !important; }
     .step-num { background:#dbeafe; color:#1d4ed8; width:24px; height:24px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0; }
   </style>
 </head>
@@ -418,14 +418,32 @@
   function show(id) { document.getElementById(id).style.display = 'block'; }
   function hide(id) { document.getElementById(id).style.display = 'none'; }
 
-  // Highlight a button in a group, clear others by prefix
+  // Highlight using inline styles to bypass any Tailwind conflicts
   function setActive(prefix, val, all) {
     for (var i = 0; i < all.length; i++) {
       var el = document.getElementById(prefix + all[i]);
-      if (el) el.classList.remove('active');
+      if (el) {
+        el.style.borderColor = '#e5e7eb';
+        el.style.backgroundColor = '#ffffff';
+        el.style.color = '#374151';
+        el.style.fontWeight = '500';
+      }
     }
     var target = document.getElementById(prefix + val);
-    if (target) target.classList.add('active');
+    if (target) {
+      target.style.borderColor = '#2563eb';
+      target.style.backgroundColor = '#eff6ff';
+      target.style.color = '#1d4ed8';
+      target.style.fontWeight = '600';
+    }
+  }
+
+  function deactivateBtn(el) {
+    if (!el) return;
+    el.style.borderColor = '#e5e7eb';
+    el.style.backgroundColor = '#ffffff';
+    el.style.color = '#374151';
+    el.style.fontWeight = '500';
   }
 
   function engineBand(cc) {
@@ -484,17 +502,15 @@
     for (var i = 0; i < ids.length; i++) hide(ids[i]);
     // Clear type button highlights
     var typeBtns = document.querySelectorAll('#type-options .sel-btn');
-    for (var j = 0; j < typeBtns.length; j++) typeBtns[j].classList.remove('active');
+    for (var j = 0; j < typeBtns.length; j++) deactivateBtn(typeBtns[j]);
     // Clear fuel button highlights
     var fuels = ['petrol','diesel','hybrid'];
     for (var k = 0; k < fuels.length; k++) {
-      var fb = document.getElementById('fuel-btn-' + fuels[k]);
-      if (fb) fb.classList.remove('active');
+      deactivateBtn(document.getElementById('fuel-btn-' + fuels[k]));
     }
     var bfuels = ['diesel','other-diesel'];
     for (var m = 0; m < bfuels.length; m++) {
-      var bb = document.getElementById('bfuel-btn-' + bfuels[m]);
-      if (bb) bb.classList.remove('active');
+      deactivateBtn(document.getElementById('bfuel-btn-' + bfuels[m]));
     }
     // Reset selects
     document.getElementById('sel-engine').value = '';
@@ -585,17 +601,16 @@
     s.fuel = ''; s.engine = ''; s.weight = '';
     // Highlight the clicked type button
     var typeBtns = document.querySelectorAll('#type-options .sel-btn');
-    for (var i = 0; i < typeBtns.length; i++) typeBtns[i].classList.remove('active');
+    for (var i = 0; i < typeBtns.length; i++) deactivateBtn(typeBtns[i]);
     var tb = document.getElementById('type-btn-' + type);
-    if (tb) tb.classList.add('active');
+    if (tb) { tb.style.borderColor='#2563eb'; tb.style.backgroundColor='#eff6ff'; tb.style.color='#1d4ed8'; tb.style.fontWeight='600'; }
     // Clear downstream
     hide('sec-engine'); hide('sec-weight'); hide('hybrid-warning');
     document.getElementById('sel-engine').value = '';
     document.getElementById('sel-weight').value = '';
     var fuels = ['petrol','diesel','hybrid'];
     for (var j = 0; j < fuels.length; j++) {
-      var fb = document.getElementById('fuel-btn-' + fuels[j]);
-      if (fb) fb.classList.remove('active');
+      deactivateBtn(document.getElementById('fuel-btn-' + fuels[j]));
     }
     show('sec-fuel');
     updateResult();
