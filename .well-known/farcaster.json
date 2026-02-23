@@ -1,0 +1,18 @@
+{
+  "accountAssociation": {
+    "header": "REPLACE_WITH_YOUR_HEADER",
+    "payload": "REPLACE_WITH_YOUR_PAYLOAD",
+    "signature": "REPLACE_WITH_YOUR_SIGNATURE"
+  },
+  "miniapp": {
+    "version": "1",
+    "name": "ZRA Duty Calc",
+    "iconUrl": "https://t3chpirat3.github.io/zra-duty-calc/splash-icon.png",
+    "homeUrl": "https://t3chpirat3.github.io/zra-duty-calc",
+    "imageUrl": "https://t3chpirat3.github.io/zra-duty-calc/frame-preview.png",
+    "buttonTitle": "Calculate Import Duty",
+    "splashImageUrl": "https://t3chpirat3.github.io/zra-duty-calc/splash-icon.png",
+    "splashBackgroundColor": "#1e3a8a",
+    "webhookUrl": ""
+  }
+}
