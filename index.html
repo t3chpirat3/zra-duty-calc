@@ -34,7 +34,7 @@
       text-align:center;
     }
     .sel-btn:hover { border-color:#93c5fd; background:#f0f9ff; }
-    .sel-btn.active { border-color:#2563eb !important; background:#eff6ff !important; color:#1d4ed8 !important; font-weight:600 !important; }
+    .sel-btn[data-active] { border-color:#2563eb !important; background-color:#eff6ff !important; color:#1d4ed8 !important; font-weight:600 !important; outline:none; }
     .step-num { background:#dbeafe; color:#1d4ed8; width:24px; height:24px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0; }
   </style>
 </head>
@@ -422,28 +422,20 @@
   function setActive(prefix, val, all) {
     for (var i = 0; i < all.length; i++) {
       var el = document.getElementById(prefix + all[i]);
-      if (el) {
-        el.style.borderColor = '#e5e7eb';
-        el.style.backgroundColor = '#ffffff';
-        el.style.color = '#374151';
-        el.style.fontWeight = '500';
-      }
+      if (el) deactivateBtn(el);
     }
     var target = document.getElementById(prefix + val);
-    if (target) {
-      target.style.borderColor = '#2563eb';
-      target.style.backgroundColor = '#eff6ff';
-      target.style.color = '#1d4ed8';
-      target.style.fontWeight = '600';
-    }
+    if (target) activateBtn(target);
   }
 
   function deactivateBtn(el) {
     if (!el) return;
-    el.style.borderColor = '#e5e7eb';
-    el.style.backgroundColor = '#ffffff';
-    el.style.color = '#374151';
-    el.style.fontWeight = '500';
+    el.removeAttribute('data-active');
+  }
+
+  function activateBtn(el) {
+    if (!el) return;
+    el.setAttribute('data-active', '1');
   }
 
   function engineBand(cc) {
@@ -603,7 +595,7 @@
     var typeBtns = document.querySelectorAll('#type-options .sel-btn');
     for (var i = 0; i < typeBtns.length; i++) deactivateBtn(typeBtns[i]);
     var tb = document.getElementById('type-btn-' + type);
-    if (tb) { tb.style.borderColor='#2563eb'; tb.style.backgroundColor='#eff6ff'; tb.style.color='#1d4ed8'; tb.style.fontWeight='600'; }
+    if (tb) activateBtn(tb);
     // Clear downstream
     hide('sec-engine'); hide('sec-weight'); hide('hybrid-warning');
     document.getElementById('sel-engine').value = '';
