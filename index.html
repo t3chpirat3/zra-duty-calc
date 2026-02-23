@@ -26,15 +26,7 @@
     .gradient-header { background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%); }
     .gradient-result { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); }
     /* Selection button style */
-    .sel-btn {
-      display:block; width:100%; padding:10px 8px; border-radius:10px;
-      border:2px solid #e5e7eb; background:#fff; cursor:pointer;
-      font-size:12px; font-weight:500; color:#374151;
-      transition: border-color 0.15s, background 0.15s;
-      text-align:center;
-    }
-    .sel-btn:hover { border-color:#93c5fd; background:#f0f9ff; }
-    .sel-btn[data-active] { border-color:#2563eb !important; background-color:#eff6ff !important; color:#1d4ed8 !important; font-weight:600 !important; outline:none; }
+    /* buttons use inline styles exclusively - no CSS class state */
     .step-num { background:#dbeafe; color:#1d4ed8; width:24px; height:24px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0; }
   </style>
 </head>
@@ -72,11 +64,11 @@
           </div>
           <div class="p-4">
             <div class="grid grid-cols-2 gap-3">
-              <button id="age-btn-young" class="sel-btn" onclick="selectAge('2-5')">
+              <button style="display:block;width:100%;padding:10px 8px;border-radius:10px;border:2px solid #e5e7eb;background-color:#ffffff;cursor:pointer;font-size:12px;font-weight:500;color:#374151;text-align:center;" id="age-btn-young" onclick="selectAge('2-5')">
                 <span class="text-2xl font-bold text-blue-600 block">2–5</span>
                 <span class="text-xs text-gray-500">Years old</span>
               </button>
-              <button id="age-btn-old" class="sel-btn" onclick="selectAge('5+')">
+              <button style="display:block;width:100%;padding:10px 8px;border-radius:10px;border:2px solid #e5e7eb;background-color:#ffffff;cursor:pointer;font-size:12px;font-weight:500;color:#374151;text-align:center;" id="age-btn-old" onclick="selectAge('5+')">
                 <span class="text-2xl font-bold text-blue-600 block">5+</span>
                 <span class="text-xs text-gray-500">Years old</span>
               </button>
@@ -94,26 +86,26 @@
           </div>
           <div class="p-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-              <button id="cat-btn-motor-car" class="sel-btn" onclick="selectCategory('motor-car')">
+              <button style="display:block;width:100%;padding:10px 8px;border-radius:10px;border:2px solid #e5e7eb;background-color:#ffffff;cursor:pointer;font-size:12px;font-weight:500;color:#374151;text-align:center;" id="cat-btn-motor-car" onclick="selectCategory('motor-car')">
                 <svg class="w-7 h-7 mx-auto mb-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 17H3a2 2 0 01-2-2v-4a2 2 0 012-2h1l3-5h10l3 5h1a2 2 0 012 2v4a2 2 0 01-2 2h-2m-8 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
                 </svg>
                 Motor Car
               </button>
-              <button id="cat-btn-goods-vehicle" class="sel-btn" onclick="selectCategory('goods-vehicle')">
+              <button style="display:block;width:100%;padding:10px 8px;border-radius:10px;border:2px solid #e5e7eb;background-color:#ffffff;cursor:pointer;font-size:12px;font-weight:500;color:#374151;text-align:center;" id="cat-btn-goods-vehicle" onclick="selectCategory('goods-vehicle')">
                 <svg class="w-7 h-7 mx-auto mb-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l4.5 1M13 16l2-8h5l1 8H13z"/>
                 </svg>
                 Goods Vehicle
               </button>
-              <button id="cat-btn-bus" class="sel-btn" onclick="selectCategory('bus')">
+              <button style="display:block;width:100%;padding:10px 8px;border-radius:10px;border:2px solid #e5e7eb;background-color:#ffffff;cursor:pointer;font-size:12px;font-weight:500;color:#374151;text-align:center;" id="cat-btn-bus" onclick="selectCategory('bus')">
                 <svg class="w-7 h-7 mx-auto mb-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18M5 18h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2zm2 0v2M17 18v2M7 6h10"/>
                 </svg>
                 Bus / Minibus
               </button>
-              <button id="cat-btn-motorcycle" class="sel-btn" onclick="selectCategory('motorcycle')">
+              <button style="display:block;width:100%;padding:10px 8px;border-radius:10px;border:2px solid #e5e7eb;background-color:#ffffff;cursor:pointer;font-size:12px;font-weight:500;color:#374151;text-align:center;" id="cat-btn-motorcycle" onclick="selectCategory('motorcycle')">
                 <svg class="w-7 h-7 mx-auto mb-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <circle cx="5.5" cy="17.5" r="2.5" stroke-width="2"/>
                   <circle cx="18.5" cy="17.5" r="2.5" stroke-width="2"/>
@@ -146,13 +138,13 @@
           </div>
           <div class="p-4">
             <div class="grid grid-cols-3 gap-3">
-              <button id="fuel-btn-petrol" class="sel-btn" onclick="selectFuel('petrol')">
+              <button style="display:block;width:100%;padding:10px 8px;border-radius:10px;border:2px solid #e5e7eb;background-color:#ffffff;cursor:pointer;font-size:12px;font-weight:500;color:#374151;text-align:center;" id="fuel-btn-petrol" onclick="selectFuel('petrol')">
                 <span class="text-xl font-bold text-blue-600 block mb-0.5">P</span>Petrol
               </button>
-              <button id="fuel-btn-diesel" class="sel-btn" onclick="selectFuel('diesel')">
+              <button style="display:block;width:100%;padding:10px 8px;border-radius:10px;border:2px solid #e5e7eb;background-color:#ffffff;cursor:pointer;font-size:12px;font-weight:500;color:#374151;text-align:center;" id="fuel-btn-diesel" onclick="selectFuel('diesel')">
                 <span class="text-xl font-bold text-blue-600 block mb-0.5">D</span>Diesel
               </button>
-              <button id="fuel-btn-hybrid" class="sel-btn" onclick="selectFuel('hybrid')">
+              <button style="display:block;width:100%;padding:10px 8px;border-radius:10px;border:2px solid #e5e7eb;background-color:#ffffff;cursor:pointer;font-size:12px;font-weight:500;color:#374151;text-align:center;" id="fuel-btn-hybrid" onclick="selectFuel('hybrid')">
                 <span class="text-xl font-bold text-green-600 block mb-0.5">H</span>Hybrid
               </button>
             </div>
@@ -204,10 +196,10 @@
           </div>
           <div class="p-4">
             <div class="grid grid-cols-2 gap-3">
-              <button id="bfuel-btn-diesel" class="sel-btn" onclick="selectBusFuel('diesel')">
+              <button style="display:block;width:100%;padding:10px 8px;border-radius:10px;border:2px solid #e5e7eb;background-color:#ffffff;cursor:pointer;font-size:12px;font-weight:500;color:#374151;text-align:center;" id="bfuel-btn-diesel" onclick="selectBusFuel('diesel')">
                 <span class="text-xl font-bold text-blue-600 block mb-0.5">D</span>Diesel / Semi-diesel
               </button>
-              <button id="bfuel-btn-other-diesel" class="sel-btn" onclick="selectBusFuel('other-diesel')">
+              <button style="display:block;width:100%;padding:10px 8px;border-radius:10px;border:2px solid #e5e7eb;background-color:#ffffff;cursor:pointer;font-size:12px;font-weight:500;color:#374151;text-align:center;" id="bfuel-btn-other-diesel" onclick="selectBusFuel('other-diesel')">
                 <span class="text-xl font-bold text-blue-600 block mb-0.5">P</span>Petrol / Other
               </button>
             </div>
@@ -430,12 +422,12 @@
 
   function deactivateBtn(el) {
     if (!el) return;
-    el.removeAttribute('data-active');
+    el.style.cssText = 'display:block;width:100%;padding:10px 8px;border-radius:10px;border:2px solid #e5e7eb;background-color:#ffffff;cursor:pointer;font-size:12px;font-weight:500;color:#374151;text-align:center;';
   }
 
   function activateBtn(el) {
     if (!el) return;
-    el.setAttribute('data-active', '1');
+    el.style.cssText = 'display:block;width:100%;padding:10px 8px;border-radius:10px;border:2px solid #2563eb;background-color:#eff6ff;cursor:pointer;font-size:12px;font-weight:600;color:#1d4ed8;text-align:center;';
   }
 
   function engineBand(cc) {
@@ -493,7 +485,7 @@
                'sec-bus-engine','sec-bus-seats','sec-vdp','hybrid-warning'];
     for (var i = 0; i < ids.length; i++) hide(ids[i]);
     // Clear type button highlights
-    var typeBtns = document.querySelectorAll('#type-options .sel-btn');
+    var typeBtns = document.querySelectorAll('#type-options button');
     for (var j = 0; j < typeBtns.length; j++) deactivateBtn(typeBtns[j]);
     // Clear fuel button highlights
     var fuels = ['petrol','diesel','hybrid'];
@@ -526,7 +518,7 @@
     for (var i = 0; i < opts.length; i++) {
       var btn = document.createElement('button');
       btn.id = 'type-btn-' + opts[i].v;
-      btn.className = 'sel-btn';
+      btn.style.cssText = 'display:block;width:100%;padding:10px 8px;border-radius:10px;border:2px solid #e5e7eb;background-color:#ffffff;cursor:pointer;font-size:12px;font-weight:500;color:#374151;text-align:center;';
       btn.textContent = opts[i].l;
       btn.setAttribute('onclick', 'selectType("' + opts[i].v + '")');
       container.appendChild(btn);
@@ -592,7 +584,7 @@
     s.type = type;
     s.fuel = ''; s.engine = ''; s.weight = '';
     // Highlight the clicked type button
-    var typeBtns = document.querySelectorAll('#type-options .sel-btn');
+    var typeBtns = document.querySelectorAll('#type-options button');
     for (var i = 0; i < typeBtns.length; i++) deactivateBtn(typeBtns[i]);
     var tb = document.getElementById('type-btn-' + type);
     if (tb) activateBtn(tb);
@@ -861,4 +853,4 @@
     lines.push('#Zambia #ZRA #ImportDuty');
 
     var text = lines.join('\n');
-    window.open('https://warpcas<!-- cache bust -->
+    window.open('https://warpcas
