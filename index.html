@@ -4,52 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ZRA Vehicle Tariff Estimator 2025</title>
-
-  <!-- Open Graph -->
   <meta property="og:title" content="ZRA Vehicle Tariff Estimator 2025" />
-  <meta property="og:description" content="Instantly estimate Zambia import duties for used motor vehicles. Based on ZRA 2025 Specific Duty Rates." />
   <meta property="og:image" content="https://t3chpirat3.github.io/zra-duty-calc/frame-preview.png" />
   <meta property="og:url" content="https://t3chpirat3.github.io/zra-duty-calc" />
-  <meta property="og:type" content="website" />
-
-  <!-- Farcaster Mini App -->
   <meta name="fc:miniapp" content='{"version":"1","imageUrl":"https://t3chpirat3.github.io/zra-duty-calc/frame-preview.png","button":{"title":"Calculate Import Duty","action":{"type":"launch_frame","name":"ZRA Duty Calc","url":"https://t3chpirat3.github.io/zra-duty-calc","splashImageUrl":"https://t3chpirat3.github.io/zra-duty-calc/splash-icon.png","splashBackgroundColor":"#1e3a8a"}}}' />
   <meta name="fc:frame" content='{"version":"1","imageUrl":"https://t3chpirat3.github.io/zra-duty-calc/frame-preview.png","button":{"title":"Calculate Import Duty","action":{"type":"launch_frame","name":"ZRA Duty Calc","url":"https://t3chpirat3.github.io/zra-duty-calc","splashImageUrl":"https://t3chpirat3.github.io/zra-duty-calc/splash-icon.png","splashBackgroundColor":"#1e3a8a"}}}' />
-
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { font-family: 'Inter', sans-serif; }
-    /* Radio card pattern — browser handles checked state, no JS needed */
     .rc { display: none; }
-    .rc + label {
-      display: block; width: 100%; padding: 10px 8px; border-radius: 10px;
-      border: 2px solid #e5e7eb; background: #fff; cursor: pointer;
-      font-size: 12px; font-weight: 500; color: #374151; text-align: center;
-      transition: border-color 0.15s, background 0.15s;
-    }
-    .rc + label:hover { border-color: #93c5fd; background: #f0f9ff; }
-    .rc:checked + label { border-color: #2563eb !important; background: #eff6ff !important; color: #1d4ed8 !important; font-weight: 600 !important; }
-    .fade-in { animation: fadeIn 0.25s ease-in; }
-    @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
-    .gradient-header { background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%); }
-    .gradient-result { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); }
+    .rc + label { display:block;width:100%;padding:10px 8px;border-radius:10px;border:2px solid #e5e7eb;background:#fff;cursor:pointer;font-size:12px;font-weight:500;color:#374151;text-align:center;transition:border-color 0.15s,background 0.15s; }
+    .rc + label:hover { border-color:#93c5fd;background:#f0f9ff; }
+    .rc:checked + label { border-color:#2563eb !important;background:#eff6ff !important;color:#1d4ed8 !important;font-weight:600 !important; }
+    .fade-in { animation:fadeIn 0.25s ease-in; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)} }
+    .g-header { background:linear-gradient(135deg,#1e40af 0%,#1e3a8a 100%); }
+    .g-result { background:linear-gradient(135deg,#eff6ff 0%,#dbeafe 100%); }
   </style>
 </head>
 <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
 
-  <header class="gradient-header text-white py-5 shadow-lg">
-    <div class="container mx-auto px-4">
-      <div class="flex items-center gap-3">
-        <div class="bg-white/10 p-2.5 rounded-lg">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-          </svg>
-        </div>
-        <div>
-          <h1 class="text-lg md:text-xl font-bold">ZRA Vehicle Tariff Estimator</h1>
-          <p class="text-blue-200 text-xs">Specific Duty Rates for Used Motor Vehicles – 2025</p>
-        </div>
+  <header class="g-header text-white py-5 shadow-lg">
+    <div class="container mx-auto px-4 flex items-center gap-3">
+      <div class="bg-white/10 p-2.5 rounded-lg">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+        </svg>
+      </div>
+      <div>
+        <h1 class="text-lg md:text-xl font-bold">ZRA Vehicle Tariff Estimator</h1>
+        <p class="text-blue-200 text-xs">Specific &amp; Ad Valorem Duty Rates &ndash; 2025</p>
       </div>
     </div>
   </header>
@@ -72,27 +57,18 @@
             <div class="grid grid-cols-3 gap-3">
               <div>
                 <input type="radio" name="age" id="age-new" value="0-2" class="rc" onchange="onAge('0-2')">
-                <label for="age-new">
-                  <span class="text-2xl font-bold text-green-600 block">&lt;2</span>
-                  <span class="text-xs text-gray-500">Years old</span>
-                </label>
+                <label for="age-new"><span class="text-2xl font-bold text-green-600 block">&lt;2</span><span class="text-xs text-gray-500">Years old</span></label>
               </div>
               <div>
                 <input type="radio" name="age" id="age-young" value="2-5" class="rc" onchange="onAge('2-5')">
-                <label for="age-young">
-                  <span class="text-2xl font-bold text-blue-600 block">2–5</span>
-                  <span class="text-xs text-gray-500">Years old</span>
-                </label>
+                <label for="age-young"><span class="text-2xl font-bold text-blue-600 block">2&ndash;5</span><span class="text-xs text-gray-500">Years old</span></label>
               </div>
               <div>
                 <input type="radio" name="age" id="age-old" value="5+" class="rc" onchange="onAge('5+')">
-                <label for="age-old">
-                  <span class="text-2xl font-bold text-blue-600 block">5+</span>
-                  <span class="text-xs text-gray-500">Years old</span>
-                </label>
+                <label for="age-old"><span class="text-2xl font-bold text-blue-600 block">5+</span><span class="text-xs text-gray-500">Years old</span></label>
               </div>
             </div>
-            <p class="text-xs text-gray-400 mt-2">Count from year of manufacture. E.g. a 2021 vehicle is ~4 years old → select 2–5.</p>
+            <p class="text-xs text-gray-400 mt-2">Vehicles under 2 years old use CIF-based (ad valorem) duties.</p>
           </div>
         </div>
 
@@ -109,39 +85,28 @@
               <div>
                 <input type="radio" name="cat" id="cat-car" value="motor-car" class="rc" onchange="onCategory('motor-car')">
                 <label for="cat-car">
-                  <svg class="w-7 h-7 mx-auto mb-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 17H3a2 2 0 01-2-2v-4a2 2 0 012-2h1l3-5h10l3 5h1a2 2 0 012 2v4a2 2 0 01-2 2h-2m-8 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
-                  </svg>
+                  <svg class="w-7 h-7 mx-auto mb-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 17H3a2 2 0 01-2-2v-4a2 2 0 012-2h1l3-5h10l3 5h1a2 2 0 012 2v4a2 2 0 01-2 2h-2m-8 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>
                   Motor Car
                 </label>
               </div>
               <div>
                 <input type="radio" name="cat" id="cat-goods" value="goods-vehicle" class="rc" onchange="onCategory('goods-vehicle')">
                 <label for="cat-goods">
-                  <svg class="w-7 h-7 mx-auto mb-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l4.5 1M13 16l2-8h5l1 8H13z"/>
-                  </svg>
+                  <svg class="w-7 h-7 mx-auto mb-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l4.5 1M13 16l2-8h5l1 8H13z"/></svg>
                   Goods Vehicle
                 </label>
               </div>
               <div>
                 <input type="radio" name="cat" id="cat-bus" value="bus" class="rc" onchange="onCategory('bus')">
                 <label for="cat-bus">
-                  <svg class="w-7 h-7 mx-auto mb-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18M5 18h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2zm2 0v2M17 18v2M7 6h10"/>
-                  </svg>
+                  <svg class="w-7 h-7 mx-auto mb-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18M5 18h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2zm2 0v2M17 18v2M7 6h10"/></svg>
                   Bus / Minibus
                 </label>
               </div>
               <div>
                 <input type="radio" name="cat" id="cat-moto" value="motorcycle" class="rc" onchange="onCategory('motorcycle')">
                 <label for="cat-moto">
-                  <svg class="w-7 h-7 mx-auto mb-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <circle cx="5.5" cy="17.5" r="2.5" stroke-width="2"/>
-                    <circle cx="18.5" cy="17.5" r="2.5" stroke-width="2"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 17.5H13V12L10 8H15L18 12H20M13 12H16"/>
-                  </svg>
+                  <svg class="w-7 h-7 mx-auto mb-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="5.5" cy="17.5" r="2.5" stroke-width="2"/><circle cx="18.5" cy="17.5" r="2.5" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 17.5H13V12L10 8H15L18 12H20M13 12H16"/></svg>
                   Motorcycle
                 </label>
               </div>
@@ -149,7 +114,7 @@
           </div>
         </div>
 
-        <!-- Step 3: Vehicle Type (motor-car / goods) -->
+        <!-- Step 3: Vehicle Type -->
         <div id="sec-type" style="display:none" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden fade-in">
           <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
             <h2 class="font-semibold text-gray-800 flex items-center gap-2 text-sm">
@@ -157,9 +122,7 @@
               Vehicle Type
             </h2>
           </div>
-          <div class="p-4">
-            <div id="type-options" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>
-          </div>
+          <div class="p-4"><div id="type-options" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div></div>
         </div>
 
         <!-- Step 4: Fuel Type -->
@@ -172,30 +135,18 @@
           </div>
           <div class="p-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-              <div>
-                <input type="radio" name="fuel" id="fuel-petrol" value="petrol" class="rc" onchange="onFuel('petrol')">
-                <label for="fuel-petrol"><span class="text-xl font-bold text-blue-600 block mb-0.5">P</span>Petrol</label>
-              </div>
-              <div>
-                <input type="radio" name="fuel" id="fuel-diesel" value="diesel" class="rc" onchange="onFuel('diesel')">
-                <label for="fuel-diesel"><span class="text-xl font-bold text-blue-600 block mb-0.5">D</span>Diesel</label>
-              </div>
-              <div>
-                <input type="radio" name="fuel" id="fuel-hybrid" value="hybrid" class="rc" onchange="onFuel('hybrid')">
-                <label for="fuel-hybrid"><span class="text-xl font-bold text-green-600 block mb-0.5">H</span>Hybrid</label>
-              </div>
-              <div>
-                <input type="radio" name="fuel" id="fuel-electric" value="electric" class="rc" onchange="onFuel('electric')">
-                <label for="fuel-electric"><span class="text-xl font-bold text-green-700 block mb-0.5">E</span>Electric</label>
-              </div>
+              <div><input type="radio" name="fuel" id="fuel-petrol" value="petrol" class="rc" onchange="onFuel('petrol')"><label for="fuel-petrol"><span class="text-xl font-bold text-blue-600 block mb-0.5">P</span>Petrol</label></div>
+              <div><input type="radio" name="fuel" id="fuel-diesel" value="diesel" class="rc" onchange="onFuel('diesel')"><label for="fuel-diesel"><span class="text-xl font-bold text-blue-600 block mb-0.5">D</span>Diesel</label></div>
+              <div><input type="radio" name="fuel" id="fuel-hybrid" value="hybrid" class="rc" onchange="onFuel('hybrid')"><label for="fuel-hybrid"><span class="text-xl font-bold text-green-600 block mb-0.5">H</span>Hybrid</label></div>
+              <div><input type="radio" name="fuel" id="fuel-electric" value="electric" class="rc" onchange="onFuel('electric')"><label for="fuel-electric"><span class="text-xl font-bold text-green-700 block mb-0.5">E</span>Electric</label></div>
             </div>
-            <div id="cif-notice" style="display:none" class="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg">
-              <p class="text-xs text-green-800" id="cif-notice-text"></p>
+            <div id="cif-fuel-notice" style="display:none" class="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg">
+              <p class="text-xs text-green-800" id="cif-fuel-notice-text"></p>
             </div>
           </div>
         </div>
 
-        <!-- Step 5: Engine Capacity -->
+        <!-- Step 5a: Engine Capacity (specific duty) -->
         <div id="sec-engine" style="display:none" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden fade-in">
           <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
             <h2 class="font-semibold text-gray-800 flex items-center gap-2 text-sm">
@@ -207,25 +158,71 @@
             <select id="sel-engine" onchange="onEngine(this.value)" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm">
               <option value="">Select engine capacity</option>
               <option value="1000">Not exceeding 1,000cc</option>
-              <option value="1500">1,001cc – 1,500cc</option>
-              <option value="2500">1,501cc – 2,500cc</option>
-              <option value="3000">2,501cc – 3,000cc</option>
+              <option value="1500">1,001cc &ndash; 1,500cc</option>
+              <option value="2500">1,501cc &ndash; 2,500cc</option>
+              <option value="3000">2,501cc &ndash; 3,000cc</option>
               <option value="3500">Exceeding 3,000cc</option>
             </select>
           </div>
         </div>
 
-        <!-- Step 5: GVW -->
+        <!-- Step 5b: GVW (goods vehicles) -->
         <div id="sec-weight" style="display:none" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden fade-in">
           <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
             <h2 class="font-semibold text-gray-800 flex items-center gap-2 text-sm">
               <span class="bg-blue-100 text-blue-700 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">5</span>
-              Gross Vehicle Weight (GVW)
+              Gross Vehicle Weight
             </h2>
           </div>
           <div class="p-4">
             <select id="sel-weight" onchange="onWeight(this.value)" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm">
               <option value="">Select gross vehicle weight</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Step 5c: CIF value input (new/hybrid/electric) -->
+        <div id="sec-cif" style="display:none" class="bg-white rounded-xl shadow-sm border border-green-200 overflow-hidden fade-in">
+          <div class="bg-green-50 px-4 py-3 border-b border-green-200">
+            <h2 class="font-semibold text-green-800 flex items-center gap-2 text-sm">
+              <span class="bg-green-100 text-green-700 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">5</span>
+              CIF Value
+              <span class="ml-auto text-xs font-normal text-green-600 bg-green-100 px-2 py-0.5 rounded-full">Ad Valorem Mode</span>
+            </h2>
+          </div>
+          <div class="p-4 space-y-3">
+            <p class="text-xs text-green-700">Duties are a percentage of the vehicle's <strong>Cost, Insurance &amp; Freight (CIF)</strong> value.</p>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="text-xs font-medium text-gray-600 block mb-1">CIF Value (USD)</label>
+                <input type="number" id="inp-cif-usd" min="0" step="100" placeholder="e.g. 8500" oninput="onCIFInput()" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-sm">
+              </div>
+              <div>
+                <label class="text-xs font-medium text-gray-600 block mb-1">USD &rarr; ZMW Rate</label>
+                <input type="number" id="inp-fx" min="1" step="0.1" placeholder="e.g. 27.5" oninput="onCIFInput()" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-sm">
+                <p class="text-xs text-gray-400 mt-1">Search "USD to ZMW" on Google</p>
+              </div>
+            </div>
+            <div id="cif-zmw-preview" style="display:none" class="p-2 bg-gray-50 rounded-lg text-xs text-gray-600 text-center"></div>
+          </div>
+        </div>
+
+        <!-- Step 6: Engine for Carbon Surtax (CIF motor cars, non-electric) -->
+        <div id="sec-cif-engine" style="display:none" class="bg-white rounded-xl shadow-sm border border-green-200 overflow-hidden fade-in">
+          <div class="bg-green-50 px-4 py-3 border-b border-green-200">
+            <h2 class="font-semibold text-green-800 flex items-center gap-2 text-sm">
+              <span class="bg-green-100 text-green-700 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">6</span>
+              Engine Capacity <span class="ml-1 text-xs font-normal text-green-600">(for Carbon Surtax)</span>
+            </h2>
+          </div>
+          <div class="p-4">
+            <select id="sel-cif-engine" onchange="onCIFEngine(this.value)" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-sm">
+              <option value="">Select engine capacity</option>
+              <option value="1000">Not exceeding 1,000cc</option>
+              <option value="1500">1,001cc &ndash; 1,500cc</option>
+              <option value="2500">1,501cc &ndash; 2,500cc</option>
+              <option value="3000">2,501cc &ndash; 3,000cc</option>
+              <option value="3500">Exceeding 3,000cc</option>
             </select>
           </div>
         </div>
@@ -240,14 +237,8 @@
           </div>
           <div class="p-4">
             <div class="grid grid-cols-2 gap-3">
-              <div>
-                <input type="radio" name="busfuel" id="bfuel-diesel" value="diesel" class="rc" onchange="onBusFuel('diesel')">
-                <label for="bfuel-diesel"><span class="text-xl font-bold text-blue-600 block mb-0.5">D</span>Diesel / Semi-diesel</label>
-              </div>
-              <div>
-                <input type="radio" name="busfuel" id="bfuel-other" value="other-diesel" class="rc" onchange="onBusFuel('other-diesel')">
-                <label for="bfuel-other"><span class="text-xl font-bold text-blue-600 block mb-0.5">P</span>Petrol / Other</label>
-              </div>
+              <div><input type="radio" name="busfuel" id="bfuel-diesel" value="diesel" class="rc" onchange="onBusFuel('diesel')"><label for="bfuel-diesel"><span class="text-xl font-bold text-blue-600 block mb-0.5">D</span>Diesel / Semi-diesel</label></div>
+              <div><input type="radio" name="busfuel" id="bfuel-other" value="other-diesel" class="rc" onchange="onBusFuel('other-diesel')"><label for="bfuel-other"><span class="text-xl font-bold text-blue-600 block mb-0.5">P</span>Petrol / Other</label></div>
             </div>
           </div>
         </div>
@@ -268,37 +259,6 @@
               <option value="38">Exceeding 33 but not exceeding 44 seats</option>
               <option value="50">Exceeding 44 seats</option>
             </select>
-          </div>
-        </div>
-
-
-        <!-- CIF Mode: USD input + exchange rate -->
-        <div id="sec-cif" style="display:none" class="bg-white rounded-xl shadow-sm border border-green-200 overflow-hidden fade-in">
-          <div class="bg-green-50 px-4 py-3 border-b border-green-200">
-            <h2 class="font-semibold text-green-800 flex items-center gap-2 text-sm">
-              <span class="bg-green-100 text-green-700 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">5</span>
-              CIF Value
-              <span class="ml-auto text-xs font-normal text-green-600 bg-green-100 px-2 py-0.5 rounded-full">Ad Valorem Mode</span>
-            </h2>
-          </div>
-          <div class="p-4 space-y-3">
-            <p class="text-xs text-green-700">This vehicle uses <strong>CIF-based (ad valorem) duty</strong> — duties are calculated as a percentage of the vehicle's Cost, Insurance &amp; Freight value.</p>
-            <div class="grid grid-cols-2 gap-3">
-              <div>
-                <label class="text-xs font-medium text-gray-600 block mb-1">CIF Value (USD)</label>
-                <input type="number" id="inp-cif-usd" min="0" step="100" placeholder="e.g. 8500"
-                  oninput="onCIFInput()"
-                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-sm">
-              </div>
-              <div>
-                <label class="text-xs font-medium text-gray-600 block mb-1">USD → ZMW Rate</label>
-                <input type="number" id="inp-fx" min="1" step="0.1" placeholder="e.g. 27.5"
-                  oninput="onCIFInput()"
-                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-sm">
-                <p class="text-xs text-gray-400 mt-1">Check Google: "USD to ZMW"</p>
-              </div>
-            </div>
-            <div id="cif-zmw-preview" style="display:none" class="p-2 bg-gray-50 rounded-lg text-xs text-gray-600 text-center"></div>
           </div>
         </div>
 
@@ -323,54 +283,29 @@
       <!-- RESULTS -->
       <div class="lg:col-span-1">
         <div class="sticky top-4 space-y-4">
-
           <div class="bg-white rounded-xl shadow-lg border-2 border-blue-200 overflow-hidden">
-            <div class="gradient-header text-white px-4 py-4">
-              <h2 class="font-semibold flex items-center gap-2 text-sm">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                </svg>
-                Duty Estimate
-              </h2>
-              <p class="text-blue-200 text-xs mt-0.5">Based on ZRA 2025 Specific Duty Rates</p>
+            <div class="g-header text-white px-4 py-4">
+              <h2 class="font-semibold text-sm">Duty Estimate</h2>
+              <p class="text-blue-200 text-xs mt-0.5">ZRA 2025 Rates</p>
             </div>
             <div class="p-4" id="result-panel">
               <div class="text-center py-8 text-gray-400">
-                <svg class="w-10 h-10 mx-auto mb-2 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                </svg>
-                <p class="text-sm">Complete the form to see your duty estimate</p>
+                <svg class="w-10 h-10 mx-auto mb-2 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                <p class="text-sm">Complete the form to see your estimate</p>
               </div>
             </div>
           </div>
-
           <div class="p-3 bg-blue-50 border border-blue-200 rounded-lg">
-            <p class="text-xs text-blue-800 flex items-start gap-2">
-              <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-              <span>Estimate only. Always confirm with a licensed clearing agent or ZRA directly.</span>
-            </p>
+            <p class="text-xs text-blue-800">Estimate only. Confirm with a licensed clearing agent or ZRA before importing.</p>
           </div>
-
-          <div class="bg-gradient-to-br from-amber-50 to-amber-100 border border-amber-200 rounded-xl p-4">
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-4">
             <h3 class="text-sm font-semibold text-amber-900 mb-2">ZRA Contact</h3>
-            <div class="space-y-1.5 text-xs text-amber-800">
-              <div class="flex items-center gap-2">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                4111
-              </div>
-              <div class="flex items-center gap-2">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a9c8cddfc0cacce9d3dbc887c6dbce87d3c4">[email&#160;protected]</a>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>
-                www.zra.org.zm
-              </div>
+            <div class="space-y-1 text-xs text-amber-800">
+              <div>&#128222; 4111</div>
+              <div>&#9993;&#65039; advice@zra.org.zm</div>
+              <div>&#127760; www.zra.org.zm</div>
             </div>
           </div>
-
         </div>
       </div>
 
@@ -378,1196 +313,235 @@
   </main>
 
   <footer class="bg-gray-800 text-gray-400 py-4 mt-8">
-    <div class="container mx-auto px-4 text-center text-xs">
-      <p>ZRA Vehicle Tariff Estimator — Specific Duty Rates for Used Motor Vehicles Valuation 2025</p>
-      <p class="mt-1">Zambia Revenue Authority · My Tax, Your Tax, Our Destiny</p>
-    </div>
+    <div class="container mx-auto px-4 text-center text-xs">ZRA Vehicle Tariff Estimator 2025 &middot; Zambia Revenue Authority</div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ================================================================
-  // TARIFF DATA — Specific Duties (used petrol/diesel, 2+ years)
-  // ================================================================
-  var CARBON = { '0-1500':123.20, '1501-2000':246.40, '2001-3000':352.00, '3001+':484.00 };
-
-  var T = {
-    '2-5': {
-      'bus-diesel':       {'0-14':66666.20,'15-32':99311.30,'33-44':215012.80,'45+':273422.30},
-      'bus-other-diesel': {'0-14':66666.20,'15-32':99311.30,'33-44':215012.80,'45+':273422.30},
-      'sedan-petrol':     {'0-1000':39461.45,'1001-1500':50343.35,'1501-2500':61229.25,'2501-3000':66466.20,'3001+':82989.05},
-      'hatchback-petrol': {'0-1000':34020.50,'1001-1500':44902.40,'1501-2500':50340.60,'2501-3000':61225.25,'3001+':77107.15},
-      'station-petrol':   {'0-1000':39461.45,'1001-1500':50340.60,'1501-2500':61225.25,'2501-3000':66466.20,'3001+':82989.05},
-      'suv-petrol':       {'0-1000':48866.53,'1001-1500':56597.74,'1501-2500':65449.00,'2501-3000':88430.00,'3001+':104752.85},
-      'sedan-diesel':     {'0-1000':39461.45,'1001-1500':50343.35,'1501-2500':61229.25,'2501-3000':66466.20,'3001+':82989.05},
-      'hatchback-diesel': {'0-1000':34020.50,'1001-1500':44902.40,'1501-2500':50340.60,'2501-3000':61225.25,'3001+':77107.15},
-      'station-diesel':   {'0-1000':39461.45,'1001-1500':50340.60,'1501-2500':61225.25,'2501-3000':66466.20,'3001+':82989.05},
-      'suv-diesel':       {'0-1000':48866.53,'1001-1500':56597.74,'1501-2500':65449.00,'2501-3000':88430.00,'3001+':104752.85},
-      'single-cab-diesel':{'1-1.5':55784.30,'1.5-3':66666.20,'3-5':77548.10},
-      'double-cab-diesel':{'0-3':77548.10,'3-5':85165.43},
-      'panel-van-diesel': {'0-1':34510.20,'1-1.5':39461.45,'1.5-3':44902.40,'3-5':55784.30},
-      'truck-diesel':     {'0-2':50343.36,'2-5':55784.30,'5-10':88430.00,'10-20':110193.80,'20+':131957.60},
-      'single-cab-petrol':{'1-1.5':55784.30,'1.5-3':66666.20,'3-5':77548.10},
-      'double-cab-petrol':{'0-3':77548.10,'3-5':85165.43},
-      'panel-van-petrol': {'0-1':34510.20,'1-1.5':39461.45,'1.5-3':44902.40,'3-5':55784.30},
-      'truck-petrol':     {'0-2':50343.36,'2-5':55784.30,'5-10':88430.00,'10-20':110193.80,'20+':131957.60},
-      'single-cab-hybrid':{'1-1.5':55784.30,'1.5-3':66666.20,'3-5':77548.10},
-      'double-cab-hybrid':{'0-3':77548.10,'3-5':85165.43},
-      'panel-van-hybrid': {'0-1':34510.20,'1-1.5':39461.45,'1.5-3':44902.40,'3-5':55784.30},
-      'truck-hybrid':     {'0-2':50343.36,'2-5':55784.30,'5-10':88430.00,'10-20':110193.80,'20+':131957.60}
-    },
-    '5+': {
-      'bus-diesel':       {'0-14':36020.50,'15-32':38196.88,'33-44':52343.35,'45+':112193.80},
-      'bus-other-diesel': {'0-14':36020.50,'15-32':38196.88,'33-44':52343.35,'45+':112193.80},
-      'sedan-petrol':     {'0-1000':25138.60,'1001-1500':29491.36,'1501-2500':33844.12,'2501-3000':41461.45,'3001+':46902.40},
-      'hatchback-petrol': {'0-1000':25138.60,'1001-1500':29491.36,'1501-2500':33844.12,'2501-3000':41461.45,'3001+':46902.40},
-      'station-petrol':   {'0-1000':25138.60,'1001-1500':29491.36,'1501-2500':36020.71,'2501-3000':41461.45,'3001+':46902.40},
-      'suv-petrol':       {'0-1000':31869.84,'1001-1500':36508.57,'1501-2500':49078.78,'2501-3000':59525.40,'3001+':68666.20},
-      'sedan-diesel':     {'0-1000':25138.60,'1001-1500':29491.36,'1501-2500':33844.12,'2501-3000':41461.45,'3001+':46902.40},
-      'hatchback-diesel': {'0-1000':25138.60,'1001-1500':29491.36,'1501-2500':33844.12,'2501-3000':41461.45,'3001+':46902.40},
-      'station-diesel':   {'0-1000':25138.60,'1001-1500':29491.36,'1501-2500':36020.71,'2501-3000':41461.45,'3001+':46902.40},
-      'suv-diesel':       {'0-1000':31869.84,'1001-1500':36508.57,'1501-2500':49078.78,'2501-3000':59525.40,'3001+':68666.20},
-      'single-cab-diesel':{'1-1.5':25138.60,'1.5-3':41461.45,'3-5':46902.40},
-      'double-cab-diesel':{'0-3':63225.25,'3-5':69210.29},
-      'panel-van-diesel': {'0-1':22309.32,'1-1.5':25138.60,'1.5-3':41461.45,'3-5':46902.40},
-      'truck-diesel':     {'0-2':25954.74,'2-5':30579.55,'5-10':36020.50,'10-20':44726.02,'20+':52343.35},
-      'single-cab-petrol':{'1-1.5':25138.60,'1.5-3':41461.45,'3-5':46902.40},
-      'double-cab-petrol':{'0-3':63225.25,'3-5':69210.29},
-      'panel-van-petrol': {'0-1':22309.32,'1-1.5':25138.60,'1.5-3':41461.45,'3-5':46902.40},
-      'truck-petrol':     {'0-2':25954.74,'2-5':30579.55,'5-10':36020.50,'10-20':44726.02,'20+':52343.35},
-      'single-cab-hybrid':{'1-1.5':25138.60,'1.5-3':41461.45,'3-5':46902.40},
-      'double-cab-hybrid':{'0-3':63225.25,'3-5':69210.29},
-      'panel-van-hybrid': {'0-1':22309.32,'1-1.5':25138.60,'1.5-3':41461.45,'3-5':46902.40},
-      'truck-hybrid':     {'0-2':25954.74,'2-5':30579.55,'5-10':36020.50,'10-20':44726.02,'20+':52343.35}
-    }
-  };
-
-  var MOTO = {
-    '2-5': {'2000':4275.21,'2500':5000.21,'3000':5725.21,'3500':6450.21,'4000':7175.21,'8000':12975.21},
-    '5+':  {'1500':4049.80,'2000':4274.80,'2500':4499.80,'3000':4724.80,'3500':4949.80,'6000':6074.80}
-  };
-
-  // ================================================================
-  // CIF RATE TABLE — Ad valorem duties (new <2yrs, hybrid, electric)
-  // Source: ZRA 2025 / Zambia Customs & Excise Act
-  // Structure: { customs%, excise%, vatBase }
-  // VAT is always 16% on (CIF + customs + excise)
-  // ================================================================
-  var CIF_RATES = {
-    // Motor Cars (HS 87.03)
-    'motor-car': {
-      'petrol':   { cd:0.25, ed:0.30 },
-      'diesel':   { cd:0.25, ed:0.30 },
-      'hybrid':   { cd:0.25, ed:0.25 },  // reduced excise for hybrids
-      'electric': { cd:0.00, ed:0.00 }   // zero customs + excise for EVs
-    },
-    // Goods Vehicles (HS 87.04)
-    'goods-vehicle': {
-      'petrol':   { cd:0.15, ed:0.10 },
-      'diesel':   { cd:0.15, ed:0.10 },
-      'hybrid':   { cd:0.15, ed:0.10 },
-      'electric': { cd:0.00, ed:0.00 }
-    },
-    // Buses (HS 87.02)
-    'bus': {
-      'diesel':       { cd:0.15, ed:0.00 },
-      'other-diesel': { cd:0.15, ed:0.00 },
-      'electric':     { cd:0.00, ed:0.00 }
-    },
-    // Motorcycles (HS 87.11)
-    'motorcycle': {
-      'petrol':   { cd:0.15, ed:0.05 },
-      'electric': { cd:0.00, ed:0.00 }
-    }
-  };
-
-  // ================================================================
-  // STATE
-  // ================================================================
-  var s = { age:'', cat:'', type:'', fuel:'', busFuel:'', engine:'', weight:'', seats:'', vdp:'', cifUSD:'', fx:'' };
-  var lastResult = null;
-  var CIF_MODE = false;  // true when age<2 OR fuel=hybrid/electric
-
-  // ================================================================
-  // HELPERS
-  // ================================================================
-  function zmw(n) { return 'ZMW ' + n.toLocaleString('en-ZM',{minimumFractionDigits:2,maximumFractionDigits:2}); }
-  function show(id) { var el=document.getElementById(id); if(el) el.style.display='block'; }
-  function hide(id) { var el=document.getElementById(id); if(el) el.style.display='none'; }
-
-  function isCIFMode() {
-    return s.age==='0-2' || s.fuel==='hybrid' || s.fuel==='electric';
-  }
-
-  function engineBand(cc) {
-    if (cc===1000) return '0-1000';
-    if (cc===1500) return '1001-1500';
-    if (cc===2500) return '1501-2500';
-    if (cc===3000) return '2501-3000';
-    return '3001+';
-  }
-  function carbonBand(cc) {
-    if (cc<=1500) return '0-1500';
-    if (cc<=2000) return '1501-2000';
-    if (cc<=3000) return '2001-3000';
-    return '3001+';
-  }
-  function weightBand(w,type) {
-    var wt=parseFloat(w);
-    if (type==='single-cab') { if(wt<=1.5) return '1-1.5'; if(wt<=3) return '1.5-3'; return '3-5'; }
-    if (type==='double-cab') { return wt<=3?'0-3':'3-5'; }
-    if (type==='panel-van')  { if(wt<=1) return '0-1'; if(wt<=1.5) return '1-1.5'; if(wt<=3) return '1.5-3'; return '3-5'; }
-    if (type==='truck')      { if(wt<=2) return '0-2'; if(wt<=5) return '2-5'; if(wt<=10) return '5-10'; if(wt<=20) return '10-20'; return '20+'; }
-    return '';
-  }
-  function busBand(n) {
-    n=parseInt(n); if(n<=14) return '0-14'; if(n<=32) return '15-32'; if(n<=44) return '33-44'; return '45+';
-  }
-
-  // ================================================================
-  // UI BUILDERS
-  // ================================================================
-  function buildTypeButtons(cat) {
-    var opts = cat==='motor-car'
-      ? [{v:'sedan',l:'Sedan'},{v:'hatchback',l:'Hatchback'},{v:'station',l:'Station Wagon'},{v:'suv',l:'SUV / 4x4'}]
-      : [{v:'single-cab',l:'Single Cab'},{v:'double-cab',l:'Double Cab'},{v:'panel-van',l:'Panel Van'},{v:'truck',l:'Truck'}];
-    var html = '';
-    for (var i=0; i<opts.length; i++) {
-      html += '<div><input type="radio" name="vtype" id="vt-'+opts[i].v+'" value="'+opts[i].v+'" class="rc" onchange="onType(''+opts[i].v+'')">'
-            + '<label for="vt-'+opts[i].v+'">'+opts[i].l+'</label></div>';
-    }
-    document.getElementById('type-options').innerHTML = html;
-  }
-
-  function buildWeightOptions(type) {
-    var map = {
-      'single-cab':[{v:'1.2',l:'Exceeding 1t, not exceeding 1.5t'},{v:'2',l:'Above 1.5t, not exceeding 3t'},{v:'4',l:'Exceeding 3t, not exceeding 5t'}],
-      'double-cab':[{v:'2.5',l:'Not exceeding 3 tonnes'},{v:'4',l:'Exceeding 3t, not exceeding 5t'}],
-      'panel-van': [{v:'0.8',l:'Not exceeding 1 tonne'},{v:'1.2',l:'Exceeding 1t, not exceeding 1.5t'},{v:'2',l:'Above 1.5t, not exceeding 3t'},{v:'4',l:'Exceeding 3t, not exceeding 5t'}],
-      'truck':     [{v:'1.5',l:'Up to 2 tonnes'},{v:'3',l:'Above 2t, not exceeding 5t'},{v:'7',l:'Above 5t, not exceeding 10t'},{v:'15',l:'Exceeding 10t, not exceeding 20t'},{v:'25',l:'Exceeding 20 tonnes'}]
-    };
-    var sel=document.getElementById('sel-weight');
-    sel.innerHTML='<option value="">Select gross vehicle weight</option>';
-    var list=map[type]||[];
-    for (var i=0;i<list.length;i++) sel.innerHTML+='<option value="'+list[i].v+'">'+list[i].l+'</option>';
-  }
-
-  function buildVDPOptions() {
-    var opts = s.age==='2-5'
-      ? [{v:'2000',l:'ZMW 2,000'},{v:'2500',l:'ZMW 2,500'},{v:'3000',l:'ZMW 3,000'},{v:'3500',l:'ZMW 3,500'},{v:'4000',l:'ZMW 4,000'},{v:'8000',l:'ZMW 8,000'}]
-      : [{v:'1500',l:'ZMW 1,500'},{v:'2000',l:'ZMW 2,000'},{v:'2500',l:'ZMW 2,500'},{v:'3000',l:'ZMW 3,000'},{v:'3500',l:'ZMW 3,500'},{v:'6000',l:'ZMW 6,000'}];
-    var sel=document.getElementById('sel-vdp');
-    sel.innerHTML='<option value="">Select VDP range</option>';
-    for (var i=0;i<opts.length;i++) sel.innerHTML+='<option value="'+opts[i].v+'">'+opts[i].l+'</option>';
-  }
-
-  function showCIFNotice() {
-    var notice = document.getElementById('cif-notice');
-    var text = document.getElementById('cif-notice-text');
-    if (!notice || !text) return;
-    var msg = '';
-    if (s.age==='0-2' && s.fuel==='electric') {
-      msg = '⚡ Electric vehicles use CIF-based ad valorem duties: 0% Customs Duty, 0% Excise Duty, 16% VAT on CIF.';
-    } else if (s.fuel==='electric') {
-      msg = '⚡ Electric vehicles are exempt from Customs & Excise duties. Only 16% VAT applies on CIF value.';
-    } else if (s.fuel==='hybrid') {
-      msg = '🔋 Hybrid vehicles use CIF-based duties: 25% Customs Duty + 25% Excise Duty (reduced from 30%) + 16% VAT.';
-    } else if (s.age==='0-2') {
-      msg = '🆕 Vehicles under 2 years old use CIF-based ad valorem duties, not ZRA specific rates.';
-    }
-    text.textContent = msg;
-    notice.style.display = msg ? 'block' : 'none';
-  }
-
-  function hideAllConditional() {
-    var ids=['sec-type','sec-fuel','sec-engine','sec-weight','sec-cif',
-             'sec-bus-engine','sec-bus-seats','sec-vdp','cif-notice'];
-    for (var i=0;i<ids.length;i++) hide(ids[i]);
-    var radios=document.querySelectorAll('input[name="vtype"], input[name="fuel"], input[name="busfuel"]');
-    for (var j=0;j<radios.length;j++) radios[j].checked=false;
-    document.getElementById('sel-engine').value='';
-    document.getElementById('sel-weight').value='';
-    document.getElementById('sel-seats').value='';
-    document.getElementById('sel-vdp').value='';
-    var cifUSD = document.getElementById('inp-cif-usd');
-    if (cifUSD) cifUSD.value='';
-    var fx = document.getElementById('inp-fx');
-    if (fx) fx.value='';
-    hide('cif-zmw-preview');
-    s.type=''; s.fuel=''; s.busFuel=''; s.engine=''; s.weight=''; s.seats=''; s.vdp=''; s.cifUSD=''; s.fx='';
-  }
-
-  // ================================================================
-  // EVENT HANDLERS
-  // ================================================================
-  function onAge(age) {
-    s.age = age;
-    // If switching to <2yr mode, reset downstream and show notice if fuel already picked
-    if (age==='0-2' && s.fuel && (s.fuel==='petrol'||s.fuel==='diesel')) {
-      showCIFNotice();
-      // Switch engine/weight to CIF input
-      hide('sec-engine'); hide('sec-weight');
-      show('sec-cif');
-    } else if (age !== '0-2' && (s.fuel==='petrol'||s.fuel==='diesel') && s.type) {
-      // Back to specific duty mode — restore engine/weight
-      hide('sec-cif');
-      if (s.cat==='motor-car') show('sec-engine');
-      else if (s.cat==='goods-vehicle') show('sec-weight');
-    }
-    if (s.cat==='motorcycle' && s.age && s.age!=='0-2') { buildVDPOptions(); s.vdp=''; document.getElementById('sel-vdp').value=''; }
-    calc();
-  }
-
-  function onCategory(cat) {
-    s.cat = cat;
-    hideAllConditional();
-    if (cat==='motor-car' || cat==='goods-vehicle') {
-      buildTypeButtons(cat);
-      show('sec-type');
-    } else if (cat==='bus') {
-      show('sec-bus-engine');
-      show('sec-bus-seats');
-    } else if (cat==='motorcycle') {
-      if (s.age && s.age!=='0-2') buildVDPOptions();
-      if (s.age==='0-2') { show('sec-fuel'); show('sec-cif'); }
-      else show('sec-vdp');
-    }
-    calc();
-  }
-
-  function onType(type) {
-    s.type=type; s.fuel=''; s.engine=''; s.weight=''; s.cifUSD=''; s.fx='';
-    document.querySelectorAll('input[name="fuel"]').forEach(function(r){r.checked=false;});
-    document.getElementById('sel-engine').value='';
-    document.getElementById('sel-weight').value='';
-    var cifEl=document.getElementById('inp-cif-usd'); if(cifEl) cifEl.value='';
-    hide('sec-engine'); hide('sec-weight'); hide('sec-cif'); hide('cif-notice');
-    show('sec-fuel');
-    calc();
-  }
-
-  function onFuel(fuel) {
-    s.fuel=fuel; s.engine=''; s.weight=''; s.cifUSD=''; s.fx='';
-    document.getElementById('sel-engine').value='';
-    document.getElementById('sel-weight').value='';
-    var cifEl=document.getElementById('inp-cif-usd'); if(cifEl) cifEl.value='';
-    hide('sec-engine'); hide('sec-weight'); hide('cif-zmw-preview');
-
-    var useCIF = isCIFMode();
-
-    if (useCIF) {
-      showCIFNotice();
-      show('sec-cif');
-    } else {
-      hide('sec-cif'); hide('cif-notice');
-      if (s.cat==='motor-car') show('sec-engine');
-      else if (s.cat==='goods-vehicle') { buildWeightOptions(s.type); show('sec-weight'); }
-    }
-    calc();
-  }
-
-  function onBusFuel(bf) { s.busFuel=bf; calc(); }
-  function onEngine(v)   { s.engine=v; calc(); }
-  function onWeight(v)   { s.weight=v; calc(); }
-  function onSeats(v)    { s.seats=v; calc(); }
-  function onVDP(v)      { s.vdp=v; calc(); }
-
-  function onCIFInput() {
-    var usd = parseFloat(document.getElementById('inp-cif-usd').value) || 0;
-    var fx  = parseFloat(document.getElementById('inp-fx').value) || 0;
-    s.cifUSD = usd;
-    s.fx = fx;
-    var preview = document.getElementById('cif-zmw-preview');
-    if (usd>0 && fx>0) {
-      var zmwVal = usd * fx;
-      preview.textContent = 'CIF in ZMW: ' + zmw(zmwVal);
-      preview.style.display = 'block';
-    } else {
-      preview.style.display = 'none';
-    }
-    calc();
-  }
-
-  // ================================================================
-  // CALCULATION
-  // ================================================================
-  function calcCIF() {
-    // Ad valorem calculation for new/<2yr/hybrid/electric vehicles
-    if (!s.cifUSD || !s.fx || s.cifUSD<=0 || s.fx<=0) return null;
-
-    var cifZMW = s.cifUSD * s.fx;
-
-    // Get rates for this vehicle type + fuel
-    var catKey = s.cat;
-    var fuelKey = s.fuel || s.busFuel || 'petrol';
-    var rates = CIF_RATES[catKey] && CIF_RATES[catKey][fuelKey];
-    if (!rates) {
-      // fallback for motor-car with no fuel yet
-      rates = { cd: 0.25, ed: 0.30 };
-    }
-
-    var cd  = cifZMW * rates.cd;
-    var ed  = cifZMW * rates.ed;
-    var vat = (cifZMW + cd + ed) * 0.16;
-
-    // Carbon surtax for motor cars (non-electric) — fixed, not CIF-based
-    var carbon = 0;
-    var cband = '';
-    if (s.cat==='motor-car' && s.fuel!=='electric' && s.engine) {
-      cband = carbonBand(parseInt(s.engine));
-      carbon = CARBON[cband];
-    }
-
-    var total = cd + ed + vat + carbon;
-
-    return {
-      mode: 'cif',
-      cifZMW: cifZMW,
-      cd: cd, ed: ed, vat: vat, carbon: carbon,
-      total: total,
-      rates: rates,
-      cband: cband,
-      note: 'CIF-based (ad valorem) duty. Customs Duty: '+(rates.cd*100)+'% · Excise Duty: '+(rates.ed*100)+'% · VAT: 16% on (CIF + CD + ED).'
-        + (s.fuel==='electric' ? ' Electric vehicles are exempt from Customs & Excise duties.' : '')
-        + (s.fuel==='hybrid' ? ' Hybrids benefit from reduced 25% Excise Duty.' : '')
-        + ' Exchange rate used: 1 USD = ZMW '+s.fx+'.'
-    };
-  }
-
-  function calcSpecific() {
-    if (!s.age || !s.cat) return null;
-
-    if (s.cat==='motorcycle') {
-      if (!s.vdp) return null;
-      var d=MOTO[s.age][s.vdp]; if(!d) return null;
-      return {mode:'specific', base:d, carbon:0, total:d, note:'Includes CD, VAT, Motor Vehicle Fee, ASYCUDA Fee, and Motor Vehicle Surtax. Carbon Emission Surtax does not apply to motorcycles.'};
-    }
-    if (s.cat==='bus') {
-      if (!s.busFuel||!s.seats) return null;
-      var row=T[s.age]['bus-'+s.busFuel]; if(!row) return null;
-      var v=row[busBand(s.seats)]; if(v===undefined) return null;
-      return {mode:'specific', base:v, carbon:0, total:v, note:'Includes CD, ED, VAT, Motor Vehicle Fee, ASYCUDA Fee, and Motor Vehicle Surtax 2. Carbon Emission Surtax does not apply to buses.'};
-    }
-    if (s.cat==='motor-car') {
-      if (!s.type||!s.fuel||!s.engine) return null;
-      var row=T[s.age][s.type+'-'+s.fuel]; if(!row) return null;
-      var base=row[engineBand(parseInt(s.engine))]; if(base===undefined) return null;
-      var cb=carbonBand(parseInt(s.engine)); var carbon=CARBON[cb];
-      return {mode:'specific', base:base, carbon:carbon, total:base+carbon, cband:cb,
-        note:'Includes CD, ED, VAT, Motor Vehicle Fee, ASYCUDA Fee, and Motor Vehicle Surtax 2. Carbon Emission Surtax added separately.'};
-    }
-    if (s.cat==='goods-vehicle') {
-      if (!s.type||!s.fuel||!s.weight) return null;
-      var row=T[s.age][s.type+'-'+s.fuel]; if(!row) return null;
-      var v=row[weightBand(s.weight,s.type)]; if(v===undefined) return null;
-      return {mode:'specific', base:v, carbon:0, total:v, note:'Includes CD, ED, VAT, Motor Vehicle Fee, ASYCUDA Fee, and Motor Vehicle Surtax 2. Carbon Emission Surtax does not apply to goods vehicles.'};
-    }
-    return null;
-  }
-
-  function calcDuty() {
-    if (!s.age || !s.cat) return null;
-    if (isCIFMode()) return calcCIF();
-    return calcSpecific();
-  }
-
-  // ================================================================
-  // RENDER
-  // ================================================================
-  function calc() {
-    var r=calcDuty(); lastResult=r;
-    var panel=document.getElementById('result-panel');
-    if (!r) {
-      panel.innerHTML='<div class="text-center py-8 text-gray-400"><svg class="w-10 h-10 mx-auto mb-2 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg><p class="text-sm">Complete the form to see your duty estimate</p></div>';
-      return;
-    }
-
-    var html='<div class="space-y-3 fade-in">';
-
-    if (r.mode==='cif') {
-      // CIF breakdown
-      var modeLabel = s.fuel==='electric' ? '⚡ Electric (Ad Valorem)' : s.fuel==='hybrid' ? '🔋 Hybrid (Ad Valorem)' : s.age==='0-2' ? '🆕 New Vehicle (Ad Valorem)' : 'Ad Valorem';
-      html+='<div class="text-center py-1"><span class="text-xs font-semibold text-green-700 bg-green-100 px-3 py-1 rounded-full">'+modeLabel+'</span></div>';
-      html+='<div class="p-3 bg-gray-50 rounded-xl space-y-2 text-sm">';
-      html+='<div class="flex justify-between"><span class="text-gray-500">CIF Value</span><span class="font-medium">'+zmw(r.cifZMW)+'</span></div>';
-      html+='<div class="flex justify-between"><span class="text-gray-500">Customs Duty ('+(r.rates.cd*100)+'%)</span><span class="font-medium">'+zmw(r.cd)+'</span></div>';
-      html+='<div class="flex justify-between"><span class="text-gray-500">Excise Duty ('+(r.rates.ed*100)+'%)</span><span class="font-medium">'+zmw(r.ed)+'</span></div>';
-      html+='<div class="flex justify-between"><span class="text-gray-500">VAT (16%)</span><span class="font-medium">'+zmw(r.vat)+'</span></div>';
-      if (r.carbon>0) {
-        html+='<div class="flex justify-between text-orange-700"><span>Carbon Surtax ('+r.cband+'cc)</span><span class="font-medium">'+zmw(r.carbon)+'</span></div>';
-      }
-      html+='</div>';
-    } else {
-      // Specific duty breakdown
-      html+='<div class="text-center p-4 bg-gray-50 rounded-xl"><p class="text-xs text-gray-500 mb-1">Base Duty (all taxes included)</p><p class="text-3xl font-bold text-gray-800">'+zmw(r.base)+'</p></div>';
-      if (r.carbon>0) {
-        html+='<div class="flex justify-between items-center px-4 py-3 bg-orange-50 rounded-xl border border-orange-200">'
-          +'<div><p class="text-xs font-semibold text-orange-800">+ Carbon Emission Surtax</p>'
-          +'<p class="text-xs text-orange-600 mt-0.5">'+r.cband+'cc band</p></div>'
-          +'<span class="text-sm font-bold text-orange-800">'+zmw(r.carbon)+'</span></div>';
-      }
-    }
-
-    html+='<div class="border-t border-gray-200"></div>';
-    html+='<div class="text-center p-4 gradient-result rounded-xl border-2 border-blue-200"><p class="text-xs text-blue-700 font-semibold mb-1">TOTAL ESTIMATED DUTY</p><p class="text-4xl font-bold text-blue-800">'+zmw(r.total)+'</p></div>';
-
-    // Notes
-    html+='<div><button onclick="toggleEl('notes-body')" class="w-full flex justify-between items-center py-2 px-1 text-xs text-gray-500 hover:bg-gray-50 rounded-lg">'
-      +'<span>ℹ️ What's included</span>'
-      +'<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>'
-      +'</button><div id="notes-body" style="display:none" class="mt-1 p-3 bg-yellow-50 border border-yellow-100 rounded-lg text-xs text-yellow-800">'+r.note+'</div></div>';
-
-    // Carbon surtax reference (motor cars)
-    if (s.cat==='motor-car') {
-      html+='<div><button onclick="toggleEl('carbon-body')" class="w-full flex justify-between items-center py-2 px-1 text-xs text-gray-500 hover:bg-gray-50 rounded-lg">'
-        +'<span>🌿 Carbon Surtax Reference</span>'
-        +'<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>'
-        +'</button><div id="carbon-body" style="display:none" class="mt-1 p-3 bg-gray-50 rounded-lg text-xs">'
-        +'<table class="w-full"><thead><tr class="border-b border-gray-200"><th class="text-left py-1 font-medium">Engine</th><th class="text-right py-1 font-medium">Surtax</th></tr></thead><tbody>'
-        +'<tr class="border-b border-gray-100"><td class="py-1.5">0–1,500cc</td><td class="text-right">'+zmw(123.20)+'</td></tr>'
-        +'<tr class="border-b border-gray-100"><td class="py-1.5">1,501–2,000cc</td><td class="text-right">'+zmw(246.40)+'</td></tr>'
-        +'<tr class="border-b border-gray-100"><td class="py-1.5">2,001–3,000cc</td><td class="text-right">'+zmw(352.00)+'</td></tr>'
-        +'<tr><td class="py-1.5">3,001cc+</td><td class="text-right">'+zmw(484.00)+'</td></tr>'
-        +'</tbody></table></div></div>';
-    }
-
-    // Share button
-    html+='<button onclick="shareCast()" class="w-full flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold py-3 px-4 rounded-xl mt-1">'
-      +'<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2H5.76A3.76 3.76 0 002 5.76v12.48A3.76 3.76 0 005.76 22h12.48A3.76 3.76 0 0022 18.24V5.76A3.76 3.76 0 0018.24 2zM17 16.5h-2.5v-5a1.5 1.5 0 00-3 0v5H9V9h2v.91A3 3 0 0117 12v4.5z"/></svg>'
-      +'Share on Farcaster</button>';
-
-    html+='</div>';
-    panel.innerHTML=html;
-  }
-
-  function toggleEl(id) { var el=document.getElementById(id); if(el) el.style.display=el.style.display==='none'?'block':'none'; }
-
-  // ================================================================
-  // SHARE
-  // ================================================================
-  function shareCast() {
-    if (!lastResult) return;
-    var r=lastResult;
-    var catL={'motor-car':'Motor Car','goods-vehicle':'Goods Vehicle','bus':'Bus/Minibus','motorcycle':'Motorcycle'};
-    var parts=[s.age+' yrs', catL[s.cat]||s.cat];
-    var typeL={'sedan':'Sedan','hatchback':'Hatchback','station':'Station Wagon','suv':'SUV/4x4','single-cab':'Single Cab','double-cab':'Double Cab','panel-van':'Panel Van','truck':'Truck'};
-    if (s.type) parts.push(typeL[s.type]||s.type);
-    if (s.fuel) parts.push(s.fuel.charAt(0).toUpperCase()+s.fuel.slice(1));
-    if (s.busFuel) parts.push(s.busFuel==='diesel'?'Diesel':'Petrol/Other');
-    var eL={'1000':'≤1000cc','1500':'1001-1500cc','2500':'1501-2500cc','3000':'2501-3000cc','3500':'>3000cc'};
-    if (s.engine&&eL[s.engine]) parts.push(eL[s.engine]);
-    var sL={'10':'≤14 seats','20':'15-32 seats','38':'33-44 seats','50':'45+ seats'};
-    if (s.seats&&sL[s.seats]) parts.push(sL[s.seats]);
-    if (s.vdp) parts.push('VDP ZMW '+parseInt(s.vdp).toLocaleString());
-    if (r.mode==='cif') parts.push('CIF USD '+Number(s.cifUSD).toLocaleString());
-    var fmt=function(n){return 'ZMW '+n.toLocaleString('en-ZM',{minimumFractionDigits:2,maximumFractionDigits:2});};
-    var lines=['🚗 Zambia Vehicle Import Duty Estimate','(ZRA 2025)','',parts.join(' · '),''];
-    if (r.mode==='cif') {
-      lines.push('📊 Customs Duty: '+fmt(r.cd));
-      lines.push('📊 Excise Duty: '+fmt(r.ed));
-      lines.push('📊 VAT: '+fmt(r.vat));
-      if (r.carbon>0) lines.push('🌿 Carbon Surtax: '+fmt(r.carbon));
-    } else {
-      lines.push('📊 Base Duties: '+fmt(r.base));
-      if (r.carbon>0) lines.push('🌿 Carbon Surtax: '+fmt(r.carbon));
-    }
-    lines.push('💰 TOTAL: '+fmt(r.total));
-    lines.push('','⚠️ Estimate only — verify with a clearing agent','#Zambia #ZRA #ImportDuty');
-    var text=lines.join('
-');
-    window.open('https://warpcast.com/~/compose?text='+encodeURIComponent(text),'_blank');
-    if (navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(text).catch(function(){});
-  }
-  </script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    * { font-family: 'Inter', sans-serif; }
-    /* Radio card pattern — browser handles checked state, no JS needed */
-    .rc { display: none; }
-    .rc + label {
-      display: block; width: 100%; padding: 10px 8px; border-radius: 10px;
-      border: 2px solid #e5e7eb; background: #fff; cursor: pointer;
-      font-size: 12px; font-weight: 500; color: #374151; text-align: center;
-      transition: border-color 0.15s, background 0.15s;
-    }
-    .rc + label:hover { border-color: #93c5fd; background: #f0f9ff; }
-    .rc:checked + label { border-color: #2563eb !important; background: #eff6ff !important; color: #1d4ed8 !important; font-weight: 600 !important; }
-    .fade-in { animation: fadeIn 0.25s ease-in; }
-    @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
-    .gradient-header { background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%); }
-    .gradient-result { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); }
-  </style>
-</head>
-<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
-
-  <header class="gradient-header text-white py-5 shadow-lg">
-    <div class="container mx-auto px-4">
-      <div class="flex items-center gap-3">
-        <div class="bg-white/10 p-2.5 rounded-lg">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-          </svg>
-        </div>
-        <div>
-          <h1 class="text-lg md:text-xl font-bold">ZRA Vehicle Tariff Estimator</h1>
-          <p class="text-blue-200 text-xs">Specific Duty Rates for Used Motor Vehicles – 2025</p>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main class="container mx-auto px-4 py-5">
-    <div class="grid lg:grid-cols-3 gap-5">
-
-      <!-- FORM -->
-      <div class="lg:col-span-2 space-y-4">
-
-        <!-- Step 1: Age -->
-        <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-          <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
-            <h2 class="font-semibold text-gray-800 flex items-center gap-2 text-sm">
-              <span class="bg-blue-100 text-blue-700 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">1</span>
-              Vehicle Age
-            </h2>
-          </div>
-          <div class="p-4">
-            <div class="grid grid-cols-3 gap-3">
-              <div>
-                <input type="radio" name="age" id="age-new" value="0-2" class="rc" onchange="onAge('0-2')">
-                <label for="age-new">
-                  <span class="text-2xl font-bold text-green-600 block">&lt;2</span>
-                  <span class="text-xs text-gray-500">Years old</span>
-                </label>
-              </div>
-              <div>
-                <input type="radio" name="age" id="age-young" value="2-5" class="rc" onchange="onAge('2-5')">
-                <label for="age-young">
-                  <span class="text-2xl font-bold text-blue-600 block">2–5</span>
-                  <span class="text-xs text-gray-500">Years old</span>
-                </label>
-              </div>
-              <div>
-                <input type="radio" name="age" id="age-old" value="5+" class="rc" onchange="onAge('5+')">
-                <label for="age-old">
-                  <span class="text-2xl font-bold text-blue-600 block">5+</span>
-                  <span class="text-xs text-gray-500">Years old</span>
-                </label>
-              </div>
-            </div>
-            <p class="text-xs text-gray-400 mt-2">Count from year of manufacture. E.g. a 2021 vehicle is ~4 years old → select 2–5.</p>
-          </div>
-        </div>
-
-        <!-- Step 2: Category -->
-        <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-          <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
-            <h2 class="font-semibold text-gray-800 flex items-center gap-2 text-sm">
-              <span class="bg-blue-100 text-blue-700 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">2</span>
-              Vehicle Category
-            </h2>
-          </div>
-          <div class="p-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-              <div>
-                <input type="radio" name="cat" id="cat-car" value="motor-car" class="rc" onchange="onCategory('motor-car')">
-                <label for="cat-car">
-                  <svg class="w-7 h-7 mx-auto mb-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 17H3a2 2 0 01-2-2v-4a2 2 0 012-2h1l3-5h10l3 5h1a2 2 0 012 2v4a2 2 0 01-2 2h-2m-8 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
-                  </svg>
-                  Motor Car
-                </label>
-              </div>
-              <div>
-                <input type="radio" name="cat" id="cat-goods" value="goods-vehicle" class="rc" onchange="onCategory('goods-vehicle')">
-                <label for="cat-goods">
-                  <svg class="w-7 h-7 mx-auto mb-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l4.5 1M13 16l2-8h5l1 8H13z"/>
-                  </svg>
-                  Goods Vehicle
-                </label>
-              </div>
-              <div>
-                <input type="radio" name="cat" id="cat-bus" value="bus" class="rc" onchange="onCategory('bus')">
-                <label for="cat-bus">
-                  <svg class="w-7 h-7 mx-auto mb-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18M5 18h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2zm2 0v2M17 18v2M7 6h10"/>
-                  </svg>
-                  Bus / Minibus
-                </label>
-              </div>
-              <div>
-                <input type="radio" name="cat" id="cat-moto" value="motorcycle" class="rc" onchange="onCategory('motorcycle')">
-                <label for="cat-moto">
-                  <svg class="w-7 h-7 mx-auto mb-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <circle cx="5.5" cy="17.5" r="2.5" stroke-width="2"/>
-                    <circle cx="18.5" cy="17.5" r="2.5" stroke-width="2"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 17.5H13V12L10 8H15L18 12H20M13 12H16"/>
-                  </svg>
-                  Motorcycle
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 3: Vehicle Type (motor-car / goods) -->
-        <div id="sec-type" style="display:none" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden fade-in">
-          <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
-            <h2 class="font-semibold text-gray-800 flex items-center gap-2 text-sm">
-              <span class="bg-blue-100 text-blue-700 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">3</span>
-              Vehicle Type
-            </h2>
-          </div>
-          <div class="p-4">
-            <div id="type-options" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>
-          </div>
-        </div>
-
-        <!-- Step 4: Fuel Type -->
-        <div id="sec-fuel" style="display:none" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden fade-in">
-          <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
-            <h2 class="font-semibold text-gray-800 flex items-center gap-2 text-sm">
-              <span class="bg-blue-100 text-blue-700 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">4</span>
-              Fuel Type
-            </h2>
-          </div>
-          <div class="p-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-              <div>
-                <input type="radio" name="fuel" id="fuel-petrol" value="petrol" class="rc" onchange="onFuel('petrol')">
-                <label for="fuel-petrol"><span class="text-xl font-bold text-blue-600 block mb-0.5">P</span>Petrol</label>
-              </div>
-              <div>
-                <input type="radio" name="fuel" id="fuel-diesel" value="diesel" class="rc" onchange="onFuel('diesel')">
-                <label for="fuel-diesel"><span class="text-xl font-bold text-blue-600 block mb-0.5">D</span>Diesel</label>
-              </div>
-              <div>
-                <input type="radio" name="fuel" id="fuel-hybrid" value="hybrid" class="rc" onchange="onFuel('hybrid')">
-                <label for="fuel-hybrid"><span class="text-xl font-bold text-green-600 block mb-0.5">H</span>Hybrid</label>
-              </div>
-              <div>
-                <input type="radio" name="fuel" id="fuel-electric" value="electric" class="rc" onchange="onFuel('electric')">
-                <label for="fuel-electric"><span class="text-xl font-bold text-green-700 block mb-0.5">E</span>Electric</label>
-              </div>
-            </div>
-            <div id="cif-notice" style="display:none" class="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg">
-              <p class="text-xs text-green-800" id="cif-notice-text"></p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 5: Engine Capacity -->
-        <div id="sec-engine" style="display:none" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden fade-in">
-          <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
-            <h2 class="font-semibold text-gray-800 flex items-center gap-2 text-sm">
-              <span class="bg-blue-100 text-blue-700 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">5</span>
-              Engine Capacity
-            </h2>
-          </div>
-          <div class="p-4">
-            <select id="sel-engine" onchange="onEngine(this.value)" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm">
-              <option value="">Select engine capacity</option>
-              <option value="1000">Not exceeding 1,000cc</option>
-              <option value="1500">1,001cc – 1,500cc</option>
-              <option value="2500">1,501cc – 2,500cc</option>
-              <option value="3000">2,501cc – 3,000cc</option>
-              <option value="3500">Exceeding 3,000cc</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Step 5: GVW -->
-        <div id="sec-weight" style="display:none" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden fade-in">
-          <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
-            <h2 class="font-semibold text-gray-800 flex items-center gap-2 text-sm">
-              <span class="bg-blue-100 text-blue-700 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">5</span>
-              Gross Vehicle Weight (GVW)
-            </h2>
-          </div>
-          <div class="p-4">
-            <select id="sel-weight" onchange="onWeight(this.value)" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm">
-              <option value="">Select gross vehicle weight</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Bus: Engine Type -->
-        <div id="sec-bus-engine" style="display:none" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden fade-in">
-          <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
-            <h2 class="font-semibold text-gray-800 flex items-center gap-2 text-sm">
-              <span class="bg-blue-100 text-blue-700 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">3</span>
-              Engine Type
-            </h2>
-          </div>
-          <div class="p-4">
-            <div class="grid grid-cols-2 gap-3">
-              <div>
-                <input type="radio" name="busfuel" id="bfuel-diesel" value="diesel" class="rc" onchange="onBusFuel('diesel')">
-                <label for="bfuel-diesel"><span class="text-xl font-bold text-blue-600 block mb-0.5">D</span>Diesel / Semi-diesel</label>
-              </div>
-              <div>
-                <input type="radio" name="busfuel" id="bfuel-other" value="other-diesel" class="rc" onchange="onBusFuel('other-diesel')">
-                <label for="bfuel-other"><span class="text-xl font-bold text-blue-600 block mb-0.5">P</span>Petrol / Other</label>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bus: Seating -->
-        <div id="sec-bus-seats" style="display:none" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden fade-in">
-          <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
-            <h2 class="font-semibold text-gray-800 flex items-center gap-2 text-sm">
-              <span class="bg-blue-100 text-blue-700 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">4</span>
-              Seating Capacity (including driver)
-            </h2>
-          </div>
-          <div class="p-4">
-            <select id="sel-seats" onchange="onSeats(this.value)" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm">
-              <option value="">Select seating capacity</option>
-              <option value="10">Not exceeding 14 seats</option>
-              <option value="20">Above 14 but not exceeding 32 seats</option>
-              <option value="38">Exceeding 33 but not exceeding 44 seats</option>
-              <option value="50">Exceeding 44 seats</option>
-            </select>
-          </div>
-        </div>
-
-
-        <!-- CIF Mode: USD input + exchange rate -->
-        <div id="sec-cif" style="display:none" class="bg-white rounded-xl shadow-sm border border-green-200 overflow-hidden fade-in">
-          <div class="bg-green-50 px-4 py-3 border-b border-green-200">
-            <h2 class="font-semibold text-green-800 flex items-center gap-2 text-sm">
-              <span class="bg-green-100 text-green-700 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">5</span>
-              CIF Value
-              <span class="ml-auto text-xs font-normal text-green-600 bg-green-100 px-2 py-0.5 rounded-full">Ad Valorem Mode</span>
-            </h2>
-          </div>
-          <div class="p-4 space-y-3">
-            <p class="text-xs text-green-700">This vehicle uses <strong>CIF-based (ad valorem) duty</strong> — duties are calculated as a percentage of the vehicle's Cost, Insurance &amp; Freight value.</p>
-            <div class="grid grid-cols-2 gap-3">
-              <div>
-                <label class="text-xs font-medium text-gray-600 block mb-1">CIF Value (USD)</label>
-                <input type="number" id="inp-cif-usd" min="0" step="100" placeholder="e.g. 8500"
-                  oninput="onCIFInput()"
-                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-sm">
-              </div>
-              <div>
-                <label class="text-xs font-medium text-gray-600 block mb-1">USD → ZMW Rate</label>
-                <input type="number" id="inp-fx" min="1" step="0.1" placeholder="e.g. 27.5"
-                  oninput="onCIFInput()"
-                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 outline-none text-sm">
-                <p class="text-xs text-gray-400 mt-1">Check Google: "USD to ZMW"</p>
-              </div>
-            </div>
-            <div id="cif-zmw-preview" style="display:none" class="p-2 bg-gray-50 rounded-lg text-xs text-gray-600 text-center"></div>
-          </div>
-        </div>
-
-        <!-- Motorcycle: VDP -->
-        <div id="sec-vdp" style="display:none" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden fade-in">
-          <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
-            <h2 class="font-semibold text-gray-800 flex items-center gap-2 text-sm">
-              <span class="bg-blue-100 text-blue-700 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">3</span>
-              Vehicle Depreciated Price (VDP)
-            </h2>
-          </div>
-          <div class="p-4">
-            <p class="text-xs text-gray-500 mb-3">ZRA's assessed depreciated value of the motorcycle.</p>
-            <select id="sel-vdp" onchange="onVDP(this.value)" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm">
-              <option value="">Select VDP range</option>
-            </select>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- RESULTS -->
-      <div class="lg:col-span-1">
-        <div class="sticky top-4 space-y-4">
-
-          <div class="bg-white rounded-xl shadow-lg border-2 border-blue-200 overflow-hidden">
-            <div class="gradient-header text-white px-4 py-4">
-              <h2 class="font-semibold flex items-center gap-2 text-sm">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                </svg>
-                Duty Estimate
-              </h2>
-              <p class="text-blue-200 text-xs mt-0.5">Based on ZRA 2025 Specific Duty Rates</p>
-            </div>
-            <div class="p-4" id="result-panel">
-              <div class="text-center py-8 text-gray-400">
-                <svg class="w-10 h-10 mx-auto mb-2 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                </svg>
-                <p class="text-sm">Complete the form to see your duty estimate</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="p-3 bg-blue-50 border border-blue-200 rounded-lg">
-            <p class="text-xs text-blue-800 flex items-start gap-2">
-              <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-              <span>Estimate only. Always confirm with a licensed clearing agent or ZRA directly.</span>
-            </p>
-          </div>
-
-          <div class="bg-gradient-to-br from-amber-50 to-amber-100 border border-amber-200 rounded-xl p-4">
-            <h3 class="text-sm font-semibold text-amber-900 mb-2">ZRA Contact</h3>
-            <div class="space-y-1.5 text-xs text-amber-800">
-              <div class="flex items-center gap-2">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                4111
-              </div>
-              <div class="flex items-center gap-2">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a9c8cddfc0cacce9d3dbc887c6dbce87d3c4">[email&#160;protected]</a>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>
-                www.zra.org.zm
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </main>
-
-  <footer class="bg-gray-800 text-gray-400 py-4 mt-8">
-    <div class="container mx-auto px-4 text-center text-xs">
-      <p>ZRA Vehicle Tariff Estimator — Specific Duty Rates for Used Motor Vehicles Valuation 2025</p>
-      <p class="mt-1">Zambia Revenue Authority · My Tax, Your Tax, Our Destiny</p>
-    </div>
-  </footer>
-
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ================================================================
-  // TARIFF DATA
-  // ================================================================
-  var CARBON = { '0-1500':123.20, '1501-2000':246.40, '2001-3000':352.00, '3001+':484.00 };
-
-  var T = {
-    '2-5': {
-      'bus-diesel':       {'0-14':66666.20,'15-32':99311.30,'33-44':215012.80,'45+':273422.30},
-      'bus-other-diesel': {'0-14':66666.20,'15-32':99311.30,'33-44':215012.80,'45+':273422.30},
-      'sedan-petrol':     {'0-1000':39461.45,'1001-1500':50343.35,'1501-2500':61229.25,'2501-3000':66466.20,'3001+':82989.05},
-      'hatchback-petrol': {'0-1000':34020.50,'1001-1500':44902.40,'1501-2500':50340.60,'2501-3000':61225.25,'3001+':77107.15},
-      'station-petrol':   {'0-1000':39461.45,'1001-1500':50340.60,'1501-2500':61225.25,'2501-3000':66466.20,'3001+':82989.05},
-      'suv-petrol':       {'0-1000':48866.53,'1001-1500':56597.74,'1501-2500':65449.00,'2501-3000':88430.00,'3001+':104752.85},
-      'sedan-diesel':     {'0-1000':39461.45,'1001-1500':50343.35,'1501-2500':61229.25,'2501-3000':66466.20,'3001+':82989.05},
-      'hatchback-diesel': {'0-1000':34020.50,'1001-1500':44902.40,'1501-2500':50340.60,'2501-3000':61225.25,'3001+':77107.15},
-      'station-diesel':   {'0-1000':39461.45,'1001-1500':50340.60,'1501-2500':61225.25,'2501-3000':66466.20,'3001+':82989.05},
-      'suv-diesel':       {'0-1000':48866.53,'1001-1500':56597.74,'1501-2500':65449.00,'2501-3000':88430.00,'3001+':104752.85},
-      'single-cab-diesel':{'1-1.5':55784.30,'1.5-3':66666.20,'3-5':77548.10},
-      'double-cab-diesel':{'0-3':77548.10,'3-5':85165.43},
-      'panel-van-diesel': {'0-1':34510.20,'1-1.5':39461.45,'1.5-3':44902.40,'3-5':55784.30},
-      'truck-diesel':     {'0-2':50343.36,'2-5':55784.30,'5-10':88430.00,'10-20':110193.80,'20+':131957.60},
-      'single-cab-petrol':{'1-1.5':55784.30,'1.5-3':66666.20,'3-5':77548.10},
-      'double-cab-petrol':{'0-3':77548.10,'3-5':85165.43},
-      'panel-van-petrol': {'0-1':34510.20,'1-1.5':39461.45,'1.5-3':44902.40,'3-5':55784.30},
-      'truck-petrol':     {'0-2':50343.36,'2-5':55784.30,'5-10':88430.00,'10-20':110193.80,'20+':131957.60},
-      'single-cab-hybrid':{'1-1.5':55784.30,'1.5-3':66666.20,'3-5':77548.10},
-      'double-cab-hybrid':{'0-3':77548.10,'3-5':85165.43},
-      'panel-van-hybrid': {'0-1':34510.20,'1-1.5':39461.45,'1.5-3':44902.40,'3-5':55784.30},
-      'truck-hybrid':     {'0-2':50343.36,'2-5':55784.30,'5-10':88430.00,'10-20':110193.80,'20+':131957.60}
-    },
-    '5+': {
-      'bus-diesel':       {'0-14':36020.50,'15-32':38196.88,'33-44':52343.35,'45+':112193.80},
-      'bus-other-diesel': {'0-14':36020.50,'15-32':38196.88,'33-44':52343.35,'45+':112193.80},
-      'sedan-petrol':     {'0-1000':25138.60,'1001-1500':29491.36,'1501-2500':33844.12,'2501-3000':41461.45,'3001+':46902.40},
-      'hatchback-petrol': {'0-1000':25138.60,'1001-1500':29491.36,'1501-2500':33844.12,'2501-3000':41461.45,'3001+':46902.40},
-      'station-petrol':   {'0-1000':25138.60,'1001-1500':29491.36,'1501-2500':36020.71,'2501-3000':41461.45,'3001+':46902.40},
-      'suv-petrol':       {'0-1000':31869.84,'1001-1500':36508.57,'1501-2500':49078.78,'2501-3000':59525.40,'3001+':68666.20},
-      'sedan-diesel':     {'0-1000':25138.60,'1001-1500':29491.36,'1501-2500':33844.12,'2501-3000':41461.45,'3001+':46902.40},
-      'hatchback-diesel': {'0-1000':25138.60,'1001-1500':29491.36,'1501-2500':33844.12,'2501-3000':41461.45,'3001+':46902.40},
-      'station-diesel':   {'0-1000':25138.60,'1001-1500':29491.36,'1501-2500':36020.71,'2501-3000':41461.45,'3001+':46902.40},
-      'suv-diesel':       {'0-1000':31869.84,'1001-1500':36508.57,'1501-2500':49078.78,'2501-3000':59525.40,'3001+':68666.20},
-      'single-cab-diesel':{'1-1.5':25138.60,'1.5-3':41461.45,'3-5':46902.40},
-      'double-cab-diesel':{'0-3':63225.25,'3-5':69210.29},
-      'panel-van-diesel': {'0-1':22309.32,'1-1.5':25138.60,'1.5-3':41461.45,'3-5':46902.40},
-      'truck-diesel':     {'0-2':25954.74,'2-5':30579.55,'5-10':36020.50,'10-20':44726.02,'20+':52343.35},
-      'single-cab-petrol':{'1-1.5':25138.60,'1.5-3':41461.45,'3-5':46902.40},
-      'double-cab-petrol':{'0-3':63225.25,'3-5':69210.29},
-      'panel-van-petrol': {'0-1':22309.32,'1-1.5':25138.60,'1.5-3':41461.45,'3-5':46902.40},
-      'truck-petrol':     {'0-2':25954.74,'2-5':30579.55,'5-10':36020.50,'10-20':44726.02,'20+':52343.35},
-      'single-cab-hybrid':{'1-1.5':25138.60,'1.5-3':41461.45,'3-5':46902.40},
-      'double-cab-hybrid':{'0-3':63225.25,'3-5':69210.29},
-      'panel-van-hybrid': {'0-1':22309.32,'1-1.5':25138.60,'1.5-3':41461.45,'3-5':46902.40},
-      'truck-hybrid':     {'0-2':25954.74,'2-5':30579.55,'5-10':36020.50,'10-20':44726.02,'20+':52343.35}
-    }
-  };
-
-  var MOTO = {
-    '2-5': {'2000':4275.21,'2500':5000.21,'3000':5725.21,'3500':6450.21,'4000':7175.21,'8000':12975.21},
-    '5+':  {'1500':4049.80,'2000':4274.80,'2500':4499.80,'3000':4724.80,'3500':4949.80,'6000':6074.80}
-  };
-
-  // ================================================================
-  // STATE
-  // ================================================================
-  var s = { age:'', cat:'', type:'', fuel:'', busFuel:'', engine:'', weight:'', seats:'', vdp:'' };
-  var lastResult = null;
-
-  // ================================================================
-  // HELPERS
-  // ================================================================
-  function zmw(n) { return 'ZMW ' + n.toLocaleString('en-ZM',{minimumFractionDigits:2,maximumFractionDigits:2}); }
-  function show(id) { document.getElementById(id).style.display='block'; }
-  function hide(id) { document.getElementById(id).style.display='none'; }
-
-  function engineBand(cc) {
-    if (cc===1000) return '0-1000';
-    if (cc===1500) return '1001-1500';
-    if (cc===2500) return '1501-2500';
-    if (cc===3000) return '2501-3000';
-    return '3001+';
-  }
-  function carbonBand(cc) {
-    if (cc<=1500) return '0-1500';
-    if (cc<=2000) return '1501-2000';
-    if (cc<=3000) return '2001-3000';
-    return '3001+';
-  }
-  function weightBand(w,type) {
-    var wt=parseFloat(w);
-    if (type==='single-cab') { if(wt<=1.5) return '1-1.5'; if(wt<=3) return '1.5-3'; return '3-5'; }
-    if (type==='double-cab') { return wt<=3?'0-3':'3-5'; }
-    if (type==='panel-van')  { if(wt<=1) return '0-1'; if(wt<=1.5) return '1-1.5'; if(wt<=3) return '1.5-3'; return '3-5'; }
-    if (type==='truck')      { if(wt<=2) return '0-2'; if(wt<=5) return '2-5'; if(wt<=10) return '5-10'; if(wt<=20) return '10-20'; return '20+'; }
-    return '';
-  }
-  function busBand(n) {
-    n=parseInt(n); if(n<=14) return '0-14'; if(n<=32) return '15-32'; if(n<=44) return '33-44'; return '45+';
-  }
-
-  function resetFrom(fields) {
-    for (var i=0; i<fields.length; i++) s[fields[i]]='';
-  }
-
-  // ================================================================
-  // UI BUILDERS
-  // ================================================================
-  function buildTypeButtons(cat) {
-    var opts = cat==='motor-car'
-      ? [{v:'sedan',l:'Sedan'},{v:'hatchback',l:'Hatchback'},{v:'station',l:'Station Wagon'},{v:'suv',l:'SUV / 4x4'}]
-      : [{v:'single-cab',l:'Single Cab'},{v:'double-cab',l:'Double Cab'},{v:'panel-van',l:'Panel Van'},{v:'truck',l:'Truck'}];
-    var html = '';
-    for (var i=0; i<opts.length; i++) {
-      html += '<div>'
-        + '<input type="radio" name="vtype" id="vt-'+opts[i].v+'" value="'+opts[i].v+'" class="rc" onchange="onType(\''+opts[i].v+'\')">'
-        + '<label for="vt-'+opts[i].v+'">'+opts[i].l+'</label>'
-        + '</div>';
-    }
-    document.getElementById('type-options').innerHTML = html;
-  }
-
-  function buildWeightOptions(type) {
-    var map = {
-      'single-cab':[{v:'1.2',l:'Exceeding 1t, not exceeding 1.5t'},{v:'2',l:'Above 1.5t, not exceeding 3t'},{v:'4',l:'Exceeding 3t, not exceeding 5t'}],
-      'double-cab':[{v:'2.5',l:'Not exceeding 3 tonnes'},{v:'4',l:'Exceeding 3t, not exceeding 5t'}],
-      'panel-van': [{v:'0.8',l:'Not exceeding 1 tonne'},{v:'1.2',l:'Exceeding 1t, not exceeding 1.5t'},{v:'2',l:'Above 1.5t, not exceeding 3t'},{v:'4',l:'Exceeding 3t, not exceeding 5t'}],
-      'truck':     [{v:'1.5',l:'Up to 2 tonnes'},{v:'3',l:'Above 2t, not exceeding 5t'},{v:'7',l:'Above 5t, not exceeding 10t'},{v:'15',l:'Exceeding 10t, not exceeding 20t'},{v:'25',l:'Exceeding 20 tonnes'}]
-    };
-    var sel=document.getElementById('sel-weight');
-    sel.innerHTML='<option value="">Select gross vehicle weight</option>';
-    var list=map[type]||[];
-    for (var i=0;i<list.length;i++) sel.innerHTML+='<option value="'+list[i].v+'">'+list[i].l+'</option>';
-  }
-
-  function buildVDPOptions() {
-    var opts = s.age==='2-5'
-      ? [{v:'2000',l:'ZMW 2,000'},{v:'2500',l:'ZMW 2,500'},{v:'3000',l:'ZMW 3,000'},{v:'3500',l:'ZMW 3,500'},{v:'4000',l:'ZMW 4,000'},{v:'8000',l:'ZMW 8,000'}]
-      : [{v:'1500',l:'ZMW 1,500'},{v:'2000',l:'ZMW 2,000'},{v:'2500',l:'ZMW 2,500'},{v:'3000',l:'ZMW 3,000'},{v:'3500',l:'ZMW 3,500'},{v:'6000',l:'ZMW 6,000'}];
-    var sel=document.getElementById('sel-vdp');
-    sel.innerHTML='<option value="">Select VDP range</option>';
-    for (var i=0;i<opts.length;i++) sel.innerHTML+='<option value="'+opts[i].v+'">'+opts[i].l+'</option>';
-  }
-
-  function hideAllConditional() {
-    var ids=['sec-type','sec-fuel','sec-engine','sec-weight','sec-bus-engine','sec-bus-seats','sec-vdp','hybrid-warning'];
-    for (var i=0;i<ids.length;i++) hide(ids[i]);
-    // Reset all radio buttons in conditional sections
-    var radios=document.querySelectorAll('input[name="vtype"], input[name="fuel"], input[name="busfuel"]');
-    for (var j=0;j<radios.length;j++) radios[j].checked=false;
-    document.getElementById('sel-engine').value='';
-    document.getElementById('sel-weight').value='';
-    document.getElementById('sel-seats').value='';
-    document.getElementById('sel-vdp').value='';
-    resetFrom(['type','fuel','busFuel','engine','weight','seats','vdp']);
-  }
-
-  // ================================================================
-  // EVENT HANDLERS
-  // ================================================================
-  function onAge(age) {
-    s.age = age;
-    if (s.cat==='motorcycle' && s.age) { buildVDPOptions(); s.vdp=''; document.getElementById('sel-vdp').value=''; }
-    calc();
-  }
-
-  function onCategory(cat) {
-    s.cat = cat;
-    hideAllConditional();
-    if (cat==='motor-car' || cat==='goods-vehicle') {
-      buildTypeButtons(cat);
-      show('sec-type');
-    } else if (cat==='bus') {
-      show('sec-bus-engine');
-      show('sec-bus-seats');
-    } else if (cat==='motorcycle') {
-      if (s.age) buildVDPOptions();
-      show('sec-vdp');
-    }
-    calc();
-  }
-
-  function onType(type) {
-    s.type=type; s.fuel=''; s.engine=''; s.weight='';
-    document.querySelectorAll('input[name="fuel"]').forEach(function(r){r.checked=false;});
-    document.getElementById('sel-engine').value='';
-    document.getElementById('sel-weight').value='';
-    hide('sec-engine'); hide('sec-weight'); hide('hybrid-warning');
-    show('sec-fuel');
-    calc();
-  }
-
-  function onFuel(fuel) {
-    s.fuel=fuel; s.engine=''; s.weight='';
-    document.getElementById('sel-engine').value='';
-    document.getElementById('sel-weight').value='';
-    fuel==='hybrid' ? show('hybrid-warning') : hide('hybrid-warning');
-    if (s.cat==='motor-car') { hide('sec-weight'); show('sec-engine'); }
-    else { hide('sec-engine'); buildWeightOptions(s.type); show('sec-weight'); }
-    calc();
-  }
-
-  function onBusFuel(bf) { s.busFuel=bf; calc(); }
-  function onEngine(v)   { s.engine=v;  calc(); }
-  function onWeight(v)   { s.weight=v;  calc(); }
-  function onSeats(v)    { s.seats=v;   calc(); }
-  function onVDP(v)      { s.vdp=v;     calc(); }
-
-  // ================================================================
-  // CALCULATION
-  // ================================================================
-  function calcDuty() {
-    if (!s.age || !s.cat) return null;
-
-    if (s.cat==='motorcycle') {
-      if (!s.vdp) return null;
-      var d=MOTO[s.age][s.vdp]; if(!d) return null;
-      return {base:d,carbon:0,total:d,note:'Includes CD, VAT, Motor Vehicle Fee, ASYCUDA Processing Fee, and Motor Vehicle Surtax. Carbon Emission Surtax does not apply to motorcycles.'};
-    }
-
-    if (s.cat==='bus') {
-      if (!s.busFuel||!s.seats) return null;
-      var row=T[s.age]['bus-'+s.busFuel]; if(!row) return null;
-      var v=row[busBand(s.seats)]; if(v===undefined) return null;
-      return {base:v,carbon:0,total:v,note:'Includes Customs Duty, Excise Duty, VAT, Motor Vehicle Fee, ASYCUDA Processing Fee, and Motor Vehicle Surtax 2. Carbon Emission Surtax does not apply to buses.'};
-    }
-
-    if (s.cat==='motor-car') {
-      if (!s.type||!s.fuel||!s.engine) return null;
-      var fk=s.fuel==='hybrid'?'petrol':s.fuel;
-      var row=T[s.age][s.type+'-'+fk]; if(!row) return null;
-      var base=row[engineBand(parseInt(s.engine))]; if(base===undefined) return null;
-      var cb=carbonBand(parseInt(s.engine)); var carbon=CARBON[cb];
-      var note=(s.fuel==='hybrid'?'⚠ Specific rates do NOT apply to hybrids (ZRA Note 2). Petrol rate shown for reference only.\n\n':'')
-        +'Base rate includes: CD, ED, VAT, Motor Vehicle Fee, ASYCUDA Fee, and Motor Vehicle Surtax 2. Carbon Emission Surtax added separately.';
-      return {base:base,carbon:carbon,total:base+carbon,note:note,cband:cb};
-    }
-
-    if (s.cat==='goods-vehicle') {
-      if (!s.type||!s.fuel||!s.weight) return null;
-      var row=T[s.age][s.type+'-'+s.fuel]; if(!row) return null;
-      var v=row[weightBand(s.weight,s.type)]; if(v===undefined) return null;
-      return {base:v,carbon:0,total:v,note:'Includes CD, ED, VAT, Motor Vehicle Fee, ASYCUDA Processing Fee, and Motor Vehicle Surtax 2. Carbon Emission Surtax does not apply to goods vehicles.'};
-    }
-
-    return null;
-  }
-
-  // ================================================================
-  // RENDER
-  // ================================================================
-  function calc() {
-    var r=calcDuty(); lastResult=r;
-    var panel=document.getElementById('result-panel');
-    if (!r) {
-      panel.innerHTML='<div class="text-center py-8 text-gray-400"><svg class="w-10 h-10 mx-auto mb-2 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg><p class="text-sm">Complete the form to see your duty estimate</p></div>';
-      return;
-    }
-
-    var html='<div class="space-y-3 fade-in">';
-    html+='<div class="text-center p-4 bg-gray-50 rounded-xl"><p class="text-xs text-gray-500 mb-1">Base Duty (all taxes included)</p><p class="text-3xl font-bold text-gray-800">'+zmw(r.base)+'</p></div>';
-
-    if (r.carbon>0) {
-      html+='<div class="flex justify-between items-center px-4 py-3 bg-orange-50 rounded-xl border border-orange-200">'
-        +'<div><p class="text-xs font-semibold text-orange-800">+ Carbon Emission Surtax</p>'
-        +'<p class="text-xs text-orange-600 mt-0.5">'+r.cband+'cc band</p></div>'
-        +'<span class="text-sm font-bold text-orange-800">'+zmw(r.carbon)+'</span></div>';
-    }
-
-    html+='<div class="border-t border-gray-200"></div>';
-    html+='<div class="text-center p-4 gradient-result rounded-xl border-2 border-blue-200"><p class="text-xs text-blue-700 font-semibold mb-1">TOTAL ESTIMATED DUTY</p><p class="text-4xl font-bold text-blue-800">'+zmw(r.total)+'</p></div>';
-
-    // Notes
-    html+='<div><button onclick="toggleEl(\'notes-body\')" class="w-full flex justify-between items-center py-2 px-1 text-xs text-gray-500 hover:bg-gray-50 rounded-lg">'
-      +'<span>ℹ️ What\'s included</span>'
-      +'<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>'
-      +'</button><div id="notes-body" style="display:none" class="mt-1 p-3 bg-yellow-50 border border-yellow-100 rounded-lg text-xs text-yellow-800">'+r.note+'</div></div>';
-
-    // Carbon reference
-    if (s.cat==='motor-car') {
-      html+='<div><button onclick="toggleEl(\'carbon-body\')" class="w-full flex justify-between items-center py-2 px-1 text-xs text-gray-500 hover:bg-gray-50 rounded-lg">'
-        +'<span>🌿 Carbon Surtax Reference</span>'
-        +'<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>'
-        +'</button><div id="carbon-body" style="display:none" class="mt-1 p-3 bg-gray-50 rounded-lg text-xs">'
-        +'<table class="w-full"><thead><tr class="border-b border-gray-200"><th class="text-left py-1 font-medium">Engine</th><th class="text-right py-1 font-medium">Surtax</th></tr></thead><tbody>'
-        +'<tr class="border-b border-gray-100"><td class="py-1.5">0–1,500cc</td><td class="text-right">'+zmw(123.20)+'</td></tr>'
-        +'<tr class="border-b border-gray-100"><td class="py-1.5">1,501–2,000cc</td><td class="text-right">'+zmw(246.40)+'</td></tr>'
-        +'<tr class="border-b border-gray-100"><td class="py-1.5">2,001–3,000cc</td><td class="text-right">'+zmw(352.00)+'</td></tr>'
-        +'<tr><td class="py-1.5">3,001cc+</td><td class="text-right">'+zmw(484.00)+'</td></tr>'
-        +'</tbody></table></div></div>';
-    }
-
-    // Share button
-    html+='<button onclick="shareCast()" class="w-full flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold py-3 px-4 rounded-xl mt-1">'
-      +'<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2H5.76A3.76 3.76 0 002 5.76v12.48A3.76 3.76 0 005.76 22h12.48A3.76 3.76 0 0022 18.24V5.76A3.76 3.76 0 0018.24 2zM17 16.5h-2.5v-5a1.5 1.5 0 00-3 0v5H9V9h2v.91A3 3 0 0117 12v4.5z"/></svg>'
-      +'Share on Farcaster</button>';
-
-    html+='</div>';
-    panel.innerHTML=html;
-  }
-
-  function toggleEl(id) { var el=document.getElementById(id); if(el) el.style.display=el.style.display==='none'?'block':'none'; }
-
-  // ================================================================
-  // SHARE
-  // ================================================================
-  function shareCast() {
-    if (!lastResult) return;
-    var r=lastResult;
-    var catL={'motor-car':'Motor Car','goods-vehicle':'Goods Vehicle','bus':'Bus/Minibus','motorcycle':'Motorcycle'};
-    var parts=[s.age+' yrs', catL[s.cat]||s.cat];
-    var typeL={'sedan':'Sedan','hatchback':'Hatchback','station':'Station Wagon','suv':'SUV/4x4','single-cab':'Single Cab','double-cab':'Double Cab','panel-van':'Panel Van','truck':'Truck'};
-    if (s.type) parts.push(typeL[s.type]||s.type);
-    if (s.fuel) parts.push(s.fuel.charAt(0).toUpperCase()+s.fuel.slice(1));
-    if (s.busFuel) parts.push(s.busFuel==='diesel'?'Diesel':'Petrol/Other');
-    var eL={'1000':'≤1000cc','1500':'1001-1500cc','2500':'1501-2500cc','3000':'2501-3000cc','3500':'>3000cc'};
-    if (s.engine&&eL[s.engine]) parts.push(eL[s.engine]);
-    var sL={'10':'≤14 seats','20':'15-32 seats','38':'33-44 seats','50':'45+ seats'};
-    if (s.seats&&sL[s.seats]) parts.push(sL[s.seats]);
-    if (s.vdp) parts.push('VDP ZMW '+parseInt(s.vdp).toLocaleString());
-    var fmt=function(n){return 'ZMW '+n.toLocaleString('en-ZM',{minimumFractionDigits:2,maximumFractionDigits:2});};
-    var lines=['🚗 Zambia Vehicle Import Duty Estimate','(ZRA 2025 Specific Duty Rates)','',parts.join(' · '),'','📊 Base Duties: '+fmt(r.base)];
-    if (r.carbon>0) lines.push('🌿 Carbon Surtax: '+fmt(r.carbon));
-    lines.push('💰 TOTAL: '+fmt(r.total));
-    lines.push('','⚠️ Estimate only — verify with a clearing agent','#Zambia #ZRA #ImportDuty');
-    var text=lines.join('\n');
-    window.o
+<script>
+var CARBON={'0-1500':123.20,'1501-2000':246.40,'2001-3000':352.00,'3001+':484.00};
+var T={
+'2-5':{
+'bus-diesel':{'0-14':66666.20,'15-32':99311.30,'33-44':215012.80,'45+':273422.30},
+'bus-other-diesel':{'0-14':66666.20,'15-32':99311.30,'33-44':215012.80,'45+':273422.30},
+'sedan-petrol':{'0-1000':39461.45,'1001-1500':50343.35,'1501-2500':61229.25,'2501-3000':66466.20,'3001+':82989.05},
+'hatchback-petrol':{'0-1000':34020.50,'1001-1500':44902.40,'1501-2500':50340.60,'2501-3000':61225.25,'3001+':77107.15},
+'station-petrol':{'0-1000':39461.45,'1001-1500':50340.60,'1501-2500':61225.25,'2501-3000':66466.20,'3001+':82989.05},
+'suv-petrol':{'0-1000':48866.53,'1001-1500':56597.74,'1501-2500':65449.00,'2501-3000':88430.00,'3001+':104752.85},
+'sedan-diesel':{'0-1000':39461.45,'1001-1500':50343.35,'1501-2500':61229.25,'2501-3000':66466.20,'3001+':82989.05},
+'hatchback-diesel':{'0-1000':34020.50,'1001-1500':44902.40,'1501-2500':50340.60,'2501-3000':61225.25,'3001+':77107.15},
+'station-diesel':{'0-1000':39461.45,'1001-1500':50340.60,'1501-2500':61225.25,'2501-3000':66466.20,'3001+':82989.05},
+'suv-diesel':{'0-1000':48866.53,'1001-1500':56597.74,'1501-2500':65449.00,'2501-3000':88430.00,'3001+':104752.85},
+'single-cab-diesel':{'1-1.5':55784.30,'1.5-3':66666.20,'3-5':77548.10},
+'double-cab-diesel':{'0-3':77548.10,'3-5':85165.43},
+'panel-van-diesel':{'0-1':34510.20,'1-1.5':39461.45,'1.5-3':44902.40,'3-5':55784.30},
+'truck-diesel':{'0-2':50343.36,'2-5':55784.30,'5-10':88430.00,'10-20':110193.80,'20+':131957.60},
+'single-cab-petrol':{'1-1.5':55784.30,'1.5-3':66666.20,'3-5':77548.10},
+'double-cab-petrol':{'0-3':77548.10,'3-5':85165.43},
+'panel-van-petrol':{'0-1':34510.20,'1-1.5':39461.45,'1.5-3':44902.40,'3-5':55784.30},
+'truck-petrol':{'0-2':50343.36,'2-5':55784.30,'5-10':88430.00,'10-20':110193.80,'20+':131957.60},
+'single-cab-hybrid':{'1-1.5':55784.30,'1.5-3':66666.20,'3-5':77548.10},
+'double-cab-hybrid':{'0-3':77548.10,'3-5':85165.43},
+'panel-van-hybrid':{'0-1':34510.20,'1-1.5':39461.45,'1.5-3':44902.40,'3-5':55784.30},
+'truck-hybrid':{'0-2':50343.36,'2-5':55784.30,'5-10':88430.00,'10-20':110193.80,'20+':131957.60}
+},
+'5+':{
+'bus-diesel':{'0-14':36020.50,'15-32':38196.88,'33-44':52343.35,'45+':112193.80},
+'bus-other-diesel':{'0-14':36020.50,'15-32':38196.88,'33-44':52343.35,'45+':112193.80},
+'sedan-petrol':{'0-1000':25138.60,'1001-1500':29491.36,'1501-2500':33844.12,'2501-3000':41461.45,'3001+':46902.40},
+'hatchback-petrol':{'0-1000':25138.60,'1001-1500':29491.36,'1501-2500':33844.12,'2501-3000':41461.45,'3001+':46902.40},
+'station-petrol':{'0-1000':25138.60,'1001-1500':29491.36,'1501-2500':36020.71,'2501-3000':41461.45,'3001+':46902.40},
+'suv-petrol':{'0-1000':31869.84,'1001-1500':36508.57,'1501-2500':49078.78,'2501-3000':59525.40,'3001+':68666.20},
+'sedan-diesel':{'0-1000':25138.60,'1001-1500':29491.36,'1501-2500':33844.12,'2501-3000':41461.45,'3001+':46902.40},
+'hatchback-diesel':{'0-1000':25138.60,'1001-1500':29491.36,'1501-2500':33844.12,'2501-3000':41461.45,'3001+':46902.40},
+'station-diesel':{'0-1000':25138.60,'1001-1500':29491.36,'1501-2500':36020.71,'2501-3000':41461.45,'3001+':46902.40},
+'suv-diesel':{'0-1000':31869.84,'1001-1500':36508.57,'1501-2500':49078.78,'2501-3000':59525.40,'3001+':68666.20},
+'single-cab-diesel':{'1-1.5':25138.60,'1.5-3':41461.45,'3-5':46902.40},
+'double-cab-diesel':{'0-3':63225.25,'3-5':69210.29},
+'panel-van-diesel':{'0-1':22309.32,'1-1.5':25138.60,'1.5-3':41461.45,'3-5':46902.40},
+'truck-diesel':{'0-2':25954.74,'2-5':30579.55,'5-10':36020.50,'10-20':44726.02,'20+':52343.35},
+'single-cab-petrol':{'1-1.5':25138.60,'1.5-3':41461.45,'3-5':46902.40},
+'double-cab-petrol':{'0-3':63225.25,'3-5':69210.29},
+'panel-van-petrol':{'0-1':22309.32,'1-1.5':25138.60,'1.5-3':41461.45,'3-5':46902.40},
+'truck-petrol':{'0-2':25954.74,'2-5':30579.55,'5-10':36020.50,'10-20':44726.02,'20+':52343.35},
+'single-cab-hybrid':{'1-1.5':25138.60,'1.5-3':41461.45,'3-5':46902.40},
+'double-cab-hybrid':{'0-3':63225.25,'3-5':69210.29},
+'panel-van-hybrid':{'0-1':22309.32,'1-1.5':25138.60,'1.5-3':41461.45,'3-5':46902.40},
+'truck-hybrid':{'0-2':25954.74,'2-5':30579.55,'5-10':36020.50,'10-20':44726.02,'20+':52343.35}
+}};
+var MOTO={'2-5':{'2000':4275.21,'2500':5000.21,'3000':5725.21,'3500':6450.21,'4000':7175.21,'8000':12975.21},'5+':{'1500':4049.80,'2000':4274.80,'2500':4499.80,'3000':4724.80,'3500':4949.80,'6000':6074.80}};
+var CIF_RATES={
+'motor-car':{petrol:{cd:0.25,ed:0.30},diesel:{cd:0.25,ed:0.30},hybrid:{cd:0.25,ed:0.25},electric:{cd:0.00,ed:0.00}},
+'goods-vehicle':{petrol:{cd:0.15,ed:0.10},diesel:{cd:0.15,ed:0.10},hybrid:{cd:0.15,ed:0.10},electric:{cd:0.00,ed:0.00}},
+'bus':{diesel:{cd:0.15,ed:0.00},'other-diesel':{cd:0.15,ed:0.00},electric:{cd:0.00,ed:0.00}},
+'motorcycle':{petrol:{cd:0.15,ed:0.05},electric:{cd:0.00,ed:0.00}}
+};
+var s={age:'',cat:'',type:'',fuel:'',busFuel:'',engine:'',cifEngine:'',weight:'',seats:'',vdp:'',cifUSD:0,fx:0};
+var lastResult=null;
+function zmw(n){return 'ZMW '+n.toLocaleString('en-ZM',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function show(id){var el=document.getElementById(id);if(el)el.style.display='block';}
+function hide(id){var el=document.getElementById(id);if(el)el.style.display='none';}
+function isCIF(){return s.age==='0-2'||s.fuel==='hybrid'||s.fuel==='electric';}
+function eBand(cc){if(cc===1000)return'0-1000';if(cc===1500)return'1001-1500';if(cc===2500)return'1501-2500';if(cc===3000)return'2501-3000';return'3001+';}
+function cBand(cc){if(cc<=1500)return'0-1500';if(cc<=2000)return'1501-2000';if(cc<=3000)return'2001-3000';return'3001+';}
+function wBand(w,t){var wt=parseFloat(w);if(t==='single-cab'){if(wt<=1.5)return'1-1.5';if(wt<=3)return'1.5-3';return'3-5';}if(t==='double-cab'){return wt<=3?'0-3':'3-5';}if(t==='panel-van'){if(wt<=1)return'0-1';if(wt<=1.5)return'1-1.5';if(wt<=3)return'1.5-3';return'3-5';}if(t==='truck'){if(wt<=2)return'0-2';if(wt<=5)return'2-5';if(wt<=10)return'5-10';if(wt<=20)return'10-20';return'20+';}return'';}
+function bBand(n){n=parseInt(n);if(n<=14)return'0-14';if(n<=32)return'15-32';if(n<=44)return'33-44';return'45+';}
+function buildTypeButtons(cat){
+var opts=cat==='motor-car'?[{v:'sedan',l:'Sedan'},{v:'hatchback',l:'Hatchback'},{v:'station',l:'Station Wagon'},{v:'suv',l:'SUV / 4x4'}]:[{v:'single-cab',l:'Single Cab'},{v:'double-cab',l:'Double Cab'},{v:'panel-van',l:'Panel Van'},{v:'truck',l:'Truck'}];
+var h='';for(var i=0;i<opts.length;i++)h+='<div><input type="radio" name="vtype" id="vt-'+opts[i].v+'" value="'+opts[i].v+'" class="rc" onchange="onType(\''+opts[i].v+'\')"><label for="vt-'+opts[i].v+'">'+opts[i].l+'</label></div>';
+document.getElementById('type-options').innerHTML=h;
+}
+function buildWeightOpts(t){
+var m={'single-cab':[{v:'1.2',l:'Exceeding 1t, not exceeding 1.5t'},{v:'2',l:'Above 1.5t, not exceeding 3t'},{v:'4',l:'Exceeding 3t, not exceeding 5t'}],'double-cab':[{v:'2.5',l:'Not exceeding 3 tonnes'},{v:'4',l:'Exceeding 3t, not exceeding 5t'}],'panel-van':[{v:'0.8',l:'Not exceeding 1 tonne'},{v:'1.2',l:'Exceeding 1t, not exceeding 1.5t'},{v:'2',l:'Above 1.5t, not exceeding 3t'},{v:'4',l:'Exceeding 3t, not exceeding 5t'}],'truck':[{v:'1.5',l:'Up to 2 tonnes'},{v:'3',l:'Above 2t, not exceeding 5t'},{v:'7',l:'Above 5t, not exceeding 10t'},{v:'15',l:'Exceeding 10t, not exceeding 20t'},{v:'25',l:'Exceeding 20 tonnes'}]};
+var sel=document.getElementById('sel-weight');sel.innerHTML='<option value="">Select gross vehicle weight</option>';
+var list=m[t]||[];for(var i=0;i<list.length;i++)sel.innerHTML+='<option value="'+list[i].v+'">'+list[i].l+'</option>';
+}
+function buildVDPOpts(){
+var opts=s.age==='2-5'?[{v:'2000',l:'ZMW 2,000'},{v:'2500',l:'ZMW 2,500'},{v:'3000',l:'ZMW 3,000'},{v:'3500',l:'ZMW 3,500'},{v:'4000',l:'ZMW 4,000'},{v:'8000',l:'ZMW 8,000'}]:[{v:'1500',l:'ZMW 1,500'},{v:'2000',l:'ZMW 2,000'},{v:'2500',l:'ZMW 2,500'},{v:'3000',l:'ZMW 3,000'},{v:'3500',l:'ZMW 3,500'},{v:'6000',l:'ZMW 6,000'}];
+var sel=document.getElementById('sel-vdp');sel.innerHTML='<option value="">Select VDP range</option>';
+for(var i=0;i<opts.length;i++)sel.innerHTML+='<option value="'+opts[i].v+'">'+opts[i].l+'</option>';
+}
+function hideAll(){
+var ids=['sec-type','sec-fuel','sec-engine','sec-weight','sec-cif','sec-cif-engine','sec-bus-engine','sec-bus-seats','sec-vdp','cif-fuel-notice'];
+for(var i=0;i<ids.length;i++)hide(ids[i]);
+var r=document.querySelectorAll('input[name="vtype"],input[name="fuel"],input[name="busfuel"]');
+for(var j=0;j<r.length;j++)r[j].checked=false;
+document.getElementById('sel-engine').value='';
+document.getElementById('sel-weight').value='';
+document.getElementById('sel-seats').value='';
+document.getElementById('sel-vdp').value='';
+document.getElementById('sel-cif-engine').value='';
+document.getElementById('inp-cif-usd').value='';
+document.getElementById('inp-fx').value='';
+hide('cif-zmw-preview');
+s.type='';s.fuel='';s.busFuel='';s.engine='';s.cifEngine='';s.weight='';s.seats='';s.vdp='';s.cifUSD=0;s.fx=0;
+}
+function onAge(age){
+s.age=age;
+if(s.fuel)onFuel(s.fuel);
+if(s.cat==='motorcycle'&&age!=='0-2')buildVDPOpts();
+calc();
+}
+function onCategory(cat){
+s.cat=cat;hideAll();
+if(cat==='motor-car'||cat==='goods-vehicle'){buildTypeButtons(cat);show('sec-type');}
+else if(cat==='bus'){show('sec-bus-engine');show('sec-bus-seats');}
+else if(cat==='motorcycle'){if(s.age==='0-2'){show('sec-cif');}else{buildVDPOpts();show('sec-vdp');}}
+calc();
+}
+function onType(type){
+s.type=type;s.fuel='';s.engine='';s.cifEngine='';s.weight='';s.cifUSD=0;s.fx=0;
+document.querySelectorAll('input[name="fuel"]').forEach(function(r){r.checked=false;});
+document.getElementById('sel-engine').value='';document.getElementById('sel-cif-engine').value='';
+document.getElementById('sel-weight').value='';document.getElementById('inp-cif-usd').value='';document.getElementById('inp-fx').value='';
+hide('sec-engine');hide('sec-weight');hide('sec-cif');hide('sec-cif-engine');hide('cif-fuel-notice');
+show('sec-fuel');calc();
+}
+function onFuel(fuel){
+s.fuel=fuel;s.engine='';s.cifEngine='';s.weight='';s.cifUSD=0;s.fx=0;
+document.getElementById('sel-engine').value='';document.getElementById('sel-cif-engine').value='';
+document.getElementById('sel-weight').value='';document.getElementById('inp-cif-usd').value='';document.getElementById('inp-fx').value='';
+hide('sec-engine');hide('sec-weight');hide('sec-cif');hide('sec-cif-engine');hide('cif-zmw-preview');
+if(isCIF()){
+var nt=document.getElementById('cif-fuel-notice-text');
+if(fuel==='electric')nt.textContent='Electric vehicles: 0% Customs Duty, 0% Excise Duty, 16% VAT on CIF value.';
+else if(fuel==='hybrid')nt.textContent='Hybrids: 25% Customs Duty + 25% Excise Duty (reduced from 30%) + 16% VAT on CIF.';
+else if(s.age==='0-2')nt.textContent='Vehicles under 2 years use CIF-based ad valorem duties.';
+show('cif-fuel-notice');show('sec-cif');
+if(s.cat==='motor-car'&&fuel!=='electric')show('sec-cif-engine');
+}else{
+hide('cif-fuel-notice');
+if(s.cat==='motor-car')show('sec-engine');
+else if(s.cat==='goods-vehicle'){buildWeightOpts(s.type);show('sec-weight');}
+}
+calc();
+}
+function onBusFuel(bf){s.busFuel=bf;calc();}
+function onEngine(v){s.engine=v;calc();}
+function onWeight(v){s.weight=v;calc();}
+function onSeats(v){s.seats=v;calc();}
+function onVDP(v){s.vdp=v;calc();}
+function onCIFEngine(v){s.cifEngine=v;calc();}
+function onCIFInput(){
+var usd=parseFloat(document.getElementById('inp-cif-usd').value)||0;
+var fx=parseFloat(document.getElementById('inp-fx').value)||0;
+s.cifUSD=usd;s.fx=fx;
+var p=document.getElementById('cif-zmw-preview');
+if(usd>0&&fx>0){p.textContent='CIF in ZMW: '+zmw(usd*fx);p.style.display='block';}
+else p.style.display='none';
+calc();
+}
+function calcCIF(){
+if(!s.cifUSD||!s.fx||s.cifUSD<=0||s.fx<=0)return null;
+var cz=s.cifUSD*s.fx;
+var fk=s.fuel||s.busFuel||'petrol';
+var cr=CIF_RATES[s.cat]&&CIF_RATES[s.cat][fk];
+if(!cr)return null;
+var cd=cz*cr.cd,ed=cz*cr.ed,vat=(cz+cd+ed)*0.16;
+var carbon=0,cb='';
+if(s.cat==='motor-car'&&s.fuel!=='electric'&&s.cifEngine&&parseInt(s.cifEngine)>0){cb=cBand(parseInt(s.cifEngine));carbon=CARBON[cb];}
+return{mode:'cif',cifZMW:cz,cd:cd,ed:ed,vat:vat,carbon:carbon,cband:cb,total:cd+ed+vat+carbon,rates:cr,
+note:'CIF-based ad valorem. Customs: '+(cr.cd*100)+'% | Excise: '+(cr.ed*100)+'% | VAT: 16% on (CIF+CD+ED). Rate: 1 USD = ZMW '+s.fx+'.'+(s.fuel==='electric'?' EVs exempt from CD & ED.':'')+(s.fuel==='hybrid'?' Hybrids get reduced 25% Excise.':'')};
+}
+function calcSpec(){
+if(!s.age||!s.cat)return null;
+if(s.cat==='motorcycle'){if(!s.vdp)return null;var d=MOTO[s.age][s.vdp];if(!d)return null;return{mode:'specific',base:d,carbon:0,total:d,note:'Includes CD, VAT, Motor Vehicle Fee, ASYCUDA Fee, and Motor Vehicle Surtax.'};}
+if(s.cat==='bus'){if(!s.busFuel||!s.seats)return null;var row=T[s.age]['bus-'+s.busFuel];if(!row)return null;var v=row[bBand(s.seats)];if(v===undefined)return null;return{mode:'specific',base:v,carbon:0,total:v,note:'Includes CD, ED, VAT, Motor Vehicle Fee, ASYCUDA Fee, and Motor Vehicle Surtax 2.'};}
+if(s.cat==='motor-car'){if(!s.type||!s.fuel||!s.engine)return null;var row=T[s.age][s.type+'-'+s.fuel];if(!row)return null;var base=row[eBand(parseInt(s.engine))];if(base===undefined)return null;var cb=cBand(parseInt(s.engine));var carbon=CARBON[cb];return{mode:'specific',base:base,carbon:carbon,cband:cb,total:base+carbon,note:'Includes CD, ED, VAT, Motor Vehicle Fee, ASYCUDA Fee, and Motor Vehicle Surtax 2. Carbon Surtax added separately.'};}
+if(s.cat==='goods-vehicle'){if(!s.type||!s.fuel||!s.weight)return null;var row=T[s.age][s.type+'-'+s.fuel];if(!row)return null;var v=row[wBand(s.weight,s.type)];if(v===undefined)return null;return{mode:'specific',base:v,carbon:0,total:v,note:'Includes CD, ED, VAT, Motor Vehicle Fee, ASYCUDA Fee, and Motor Vehicle Surtax 2.'};}
+return null;
+}
+function calcDuty(){if(!s.age||!s.cat)return null;return isCIF()?calcCIF():calcSpec();}
+function calc(){
+var r=calcDuty();lastResult=r;
+var panel=document.getElementById('result-panel');
+if(!r){panel.innerHTML='<div class="text-center py-8 text-gray-400"><svg class="w-10 h-10 mx-auto mb-2 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg><p class="text-sm">Complete the form to see your estimate</p></div>';return;}
+var h='<div class="space-y-3 fade-in">';
+if(r.mode==='cif'){
+var badge=s.fuel==='electric'?'Electric (Ad Valorem)':s.fuel==='hybrid'?'Hybrid (Ad Valorem)':'New Vehicle (Ad Valorem)';
+h+='<div class="text-center py-1"><span class="text-xs font-semibold text-green-700 bg-green-100 px-3 py-1 rounded-full">'+badge+'</span></div>';
+h+='<div class="p-3 bg-gray-50 rounded-xl space-y-2 text-sm">';
+h+='<div class="flex justify-between"><span class="text-gray-500">CIF Value</span><span class="font-medium">'+zmw(r.cifZMW)+'</span></div>';
+h+='<div class="flex justify-between"><span class="text-gray-500">Customs Duty ('+(r.rates.cd*100)+'%)</span><span class="font-medium">'+zmw(r.cd)+'</span></div>';
+h+='<div class="flex justify-between"><span class="text-gray-500">Excise Duty ('+(r.rates.ed*100)+'%)</span><span class="font-medium">'+zmw(r.ed)+'</span></div>';
+h+='<div class="flex justify-between"><span class="text-gray-500">VAT (16%)</span><span class="font-medium">'+zmw(r.vat)+'</span></div>';
+if(r.carbon>0)h+='<div class="flex justify-between text-orange-700"><span>Carbon Surtax ('+r.cband+')</span><span class="font-medium">'+zmw(r.carbon)+'</span></div>';
+h+='</div>';
+}else{
+h+='<div class="text-center p-4 bg-gray-50 rounded-xl"><p class="text-xs text-gray-500 mb-1">Base Duty (all taxes included)</p><p class="text-3xl font-bold text-gray-800">'+zmw(r.base)+'</p></div>';
+if(r.carbon>0)h+='<div class="flex justify-between items-center px-4 py-3 bg-orange-50 rounded-xl border border-orange-200"><div><p class="text-xs font-semibold text-orange-800">+ Carbon Emission Surtax</p><p class="text-xs text-orange-600 mt-0.5">'+r.cband+' band</p></div><span class="text-sm font-bold text-orange-800">'+zmw(r.carbon)+'</span></div>';
+}
+h+='<div class="border-t border-gray-200"></div>';
+h+='<div class="text-center p-4 g-result rounded-xl border-2 border-blue-200"><p class="text-xs text-blue-700 font-semibold mb-1">TOTAL ESTIMATED DUTY</p><p class="text-4xl font-bold text-blue-800">'+zmw(r.total)+'</p></div>';
+h+='<div><button onclick="toggleEl(\'nb\')" class="w-full flex justify-between items-center py-2 px-1 text-xs text-gray-500 hover:bg-gray-50 rounded-lg"><span>What\'s included</span><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div id="nb" style="display:none" class="mt-1 p-3 bg-yellow-50 border border-yellow-100 rounded-lg text-xs text-yellow-800">'+r.note+'</div></div>';
+if(s.cat==='motor-car'){
+h+='<div><button onclick="toggleEl(\'cb\')" class="w-full flex justify-between items-center py-2 px-1 text-xs text-gray-500 hover:bg-gray-50 rounded-lg"><span>Carbon Surtax Reference</span><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div id="cb" style="display:none" class="mt-1 p-3 bg-gray-50 rounded-lg text-xs"><table class="w-full"><thead><tr class="border-b"><th class="text-left py-1 font-medium">Engine</th><th class="text-right py-1 font-medium">Surtax</th></tr></thead><tbody><tr class="border-b border-gray-100"><td class="py-1.5">0-1,500cc</td><td class="text-right">'+zmw(123.20)+'</td></tr><tr class="border-b border-gray-100"><td class="py-1.5">1,501-2,000cc</td><td class="text-right">'+zmw(246.40)+'</td></tr><tr class="border-b border-gray-100"><td class="py-1.5">2,001-3,000cc</td><td class="text-right">'+zmw(352.00)+'</td></tr><tr><td class="py-1.5">3,001cc+</td><td class="text-right">'+zmw(484.00)+'</td></tr></tbody></table></div></div>';
+}
+h+='<button onclick="shareCast()" class="w-full flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold py-3 px-4 rounded-xl mt-1"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2H5.76A3.76 3.76 0 002 5.76v12.48A3.76 3.76 0 005.76 22h12.48A3.76 3.76 0 0022 18.24V5.76A3.76 3.76 0 0018.24 2zM17 16.5h-2.5v-5a1.5 1.5 0 00-3 0v5H9V9h2v.91A3 3 0 0117 12v4.5z"/></svg>Share on Farcaster</button>';
+h+='</div>';panel.innerHTML=h;
+}
+function toggleEl(id){var el=document.getElementById(id);if(el)el.style.display=el.style.display==='none'?'block':'none';}
+function shareCast(){
+if(!lastResult)return;var r=lastResult;
+var catL={'motor-car':'Motor Car','goods-vehicle':'Goods Vehicle','bus':'Bus/Minibus','motorcycle':'Motorcycle'};
+var typeL={'sedan':'Sedan','hatchback':'Hatchback','station':'Station Wagon','suv':'SUV/4x4','single-cab':'Single Cab','double-cab':'Double Cab','panel-van':'Panel Van','truck':'Truck'};
+var eL={'1000':'<=1000cc','1500':'1001-1500cc','2500':'1501-2500cc','3000':'2501-3000cc','3500':'>3000cc'};
+var sL={'10':'<=14 seats','20':'15-32 seats','38':'33-44 seats','50':'45+ seats'};
+var parts=[s.age+' yrs',catL[s.cat]||s.cat];
+if(s.type)parts.push(typeL[s.type]||s.type);
+if(s.fuel)parts.push(s.fuel.charAt(0).toUpperCase()+s.fuel.slice(1));
+if(s.busFuel)parts.push(s.busFuel==='diesel'?'Diesel':'Petrol/Other');
+if(s.engine&&eL[s.engine])parts.push(eL[s.engine]);
+if(s.seats&&sL[s.seats])parts.push(sL[s.seats]);
+if(s.vdp)parts.push('VDP ZMW '+parseInt(s.vdp).toLocaleString());
+if(r.mode==='cif')parts.push('CIF USD '+Number(s.cifUSD).toLocaleString());
+var fmt=function(n){return 'ZMW '+n.toLocaleString('en-ZM',{minimumFractionDigits:2,maximumFractionDigits:2});};
+var lines=['Zambia Vehicle Import Duty Estimate','(ZRA 2025)','',parts.join(' / '),''];
+if(r.mode==='cif'){lines.push('Customs: '+fmt(r.cd));lines.push('Excise: '+fmt(r.ed));lines.push('VAT: '+fmt(r.vat));if(r.carbon>0)lines.push('Carbon Surtax: '+fmt(r.carbon));}
+else{lines.push('Base Duties: '+fmt(r.base));if(r.carbon>0)lines.push('Carbon Surtax: '+fmt(r.carbon));}
+lines.push('TOTAL: '+fmt(r.total));lines.push('','Estimate only - verify with a clearing agent','#Zambia #ZRA #ImportDuty');
+var text=lines.join('\n');
+window.open('https://warpcast.com/~/compose?text='+encodeURIComponent(text),'_blank');
+if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(text).catch(function(){});
+}
+</script>
+</body>
+</html>
