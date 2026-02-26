@@ -195,10 +195,10 @@
           <div class="p-4">
             <select id="sel-engine" onchange="onEngine(this.value)" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm">
               <option value="">Select engine capacity</option>
-              <option value="800">Not exceeding 1,000cc</option>
-              <option value="1200">1,001cc – 1,500cc</option>
-              <option value="1800">1,501cc – 2,500cc</option>
-              <option value="2700">2,501cc – 3,000cc</option>
+              <option value="1000">Not exceeding 1,000cc</option>
+              <option value="1500">1,001cc – 1,500cc</option>
+              <option value="2500">1,501cc – 2,500cc</option>
+              <option value="3000">2,501cc – 3,000cc</option>
               <option value="3500">Exceeding 3,000cc</option>
             </select>
           </div>
@@ -320,7 +320,7 @@
               </div>
               <div class="flex items-center gap-2">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                advice@zra.org.zm
+                <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a9c8cddfc0cacce9d3dbc887c6dbce87d3c4">[email&#160;protected]</a>
               </div>
               <div class="flex items-center gap-2">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>
@@ -342,7 +342,7 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // ================================================================
   // TARIFF DATA
   // ================================================================
@@ -418,12 +418,17 @@
   function hide(id) { document.getElementById(id).style.display='none'; }
 
   function engineBand(cc) {
-    if (cc<=1000) return '0-1000'; if (cc<=1500) return '1001-1500';
-    if (cc<=2500) return '1501-2500'; if (cc<=3000) return '2501-3000'; return '3001+';
+    if (cc===1000) return '0-1000';
+    if (cc===1500) return '1001-1500';
+    if (cc===2500) return '1501-2500';
+    if (cc===3000) return '2501-3000';
+    return '3001+';
   }
   function carbonBand(cc) {
-    if (cc<=1500) return '0-1500'; if (cc<=2000) return '1501-2000';
-    if (cc<=3000) return '2001-3000'; return '3001+';
+    if (cc<=1500) return '0-1500';
+    if (cc<=2000) return '1501-2000';
+    if (cc<=3000) return '2001-3000';
+    return '3001+';
   }
   function weightBand(w,type) {
     var wt=parseFloat(w);
@@ -651,7 +656,7 @@
     if (s.type) parts.push(typeL[s.type]||s.type);
     if (s.fuel) parts.push(s.fuel.charAt(0).toUpperCase()+s.fuel.slice(1));
     if (s.busFuel) parts.push(s.busFuel==='diesel'?'Diesel':'Petrol/Other');
-    var eL={'800':'≤1000cc','1200':'1001-1500cc','1800':'1501-2500cc','2700':'2501-3000cc','3500':'>3000cc'};
+    var eL={'1000':'≤1000cc','1500':'1001-1500cc','2500':'1501-2500cc','3000':'2501-3000cc','3500':'>3000cc'};
     if (s.engine&&eL[s.engine]) parts.push(eL[s.engine]);
     var sL={'10':'≤14 seats','20':'15-32 seats','38':'33-44 seats','50':'45+ seats'};
     if (s.seats&&sL[s.seats]) parts.push(sL[s.seats]);
@@ -662,9 +667,4 @@
     lines.push('💰 TOTAL: '+fmt(r.total));
     lines.push('','⚠️ Estimate only — verify with a clearing agent','#Zambia #ZRA #ImportDuty');
     var text=lines.join('\n');
-    window.open('https://warpcast.com/~/compose?text='+encodeURIComponent(text),'_blank');
-    if (navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(text).catch(function(){});
-  }
-  </script>
-</body>
-</html>
+    window.o
