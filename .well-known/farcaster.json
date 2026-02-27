@@ -1,29 +1,19 @@
 {
   "accountAssociation": {
-    "header": "eyJmaWQiOjI4MTExMzAsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHg1MDQyNDdmNzAwQTYxQTQyRDVERUJCOTZCZTAxNmI0OWNFRmMzNTFDIn0",
-    "payload": "eyJkb21haW4iOiJ0M2NocGlyYXQzLmdpdGh1Yi5pbyJ9",
-    "signature": "FB9Cw+vMuwOEAdIoYeh8v6V8YAjxHEsqVKXg0Ras0W1umFnFQpJYrPU4xhJCUQ4nF2TAjeLps/lxmO8I5NwxoRw="
+    "header": "REPLACE_WITH_HEADER_FROM_SIGNING_TOOL",
+    "payload": "REPLACE_WITH_PAYLOAD_FROM_SIGNING_TOOL",
+    "signature": "REPLACE_WITH_SIGNATURE_FROM_SIGNING_TOOL"
   },
   "miniapp": {
     "version": "1",
-    "name": "ZRA Duty Calc",
+    "name": "ZRA Duty Calculator",
     "iconUrl": "https://t3chpirat3.github.io/zra-duty-calc/splash-icon.png",
     "homeUrl": "https://t3chpirat3.github.io/zra-duty-calc",
     "imageUrl": "https://t3chpirat3.github.io/zra-duty-calc/frame-preview.png",
     "buttonTitle": "Calculate Import Duty",
     "splashImageUrl": "https://t3chpirat3.github.io/zra-duty-calc/splash-icon.png",
     "splashBackgroundColor": "#1e3a8a",
-    "webhookUrl": ""
-  },
-  "frame": {
-    "version": "1",
-    "name": "ZRA Duty Calc",
-    "iconUrl": "https://t3chpirat3.github.io/zra-duty-calc/splash-icon.png",
-    "homeUrl": "https://t3chpirat3.github.io/zra-duty-calc",
-    "imageUrl": "https://t3chpirat3.github.io/zra-duty-calc/frame-preview.png",
-    "buttonTitle": "Calculate Import Duty",
-    "splashImageUrl": "https://t3chpirat3.github.io/zra-duty-calc/splash-icon.png",
-    "splashBackgroundColor": "#1e3a8a",
-    "webhookUrl": ""
+    "primaryCategory": "finance",
+    "tags": ["zambia", "zra", "import", "duty", "tax", "finance", "vehicle"]
   }
 }
