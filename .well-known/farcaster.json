@@ -7,11 +7,11 @@
   "miniapp": {
     "version": "1",
     "name": "ZRA Duty Calculator",
-    "iconUrl": "https://t3chpirat3.github.io/zra-duty-calc/splash-icon.png",
-    "homeUrl": "https://t3chpirat3.github.io/zra-duty-calc",
-    "imageUrl": "https://t3chpirat3.github.io/zra-duty-calc/frame-preview.png",
+    "iconUrl": "https://zra-duty-calc.vercel.app/splash-icon.png",
+    "homeUrl": "https://zra-duty-calc.vercel.app",
+    "imageUrl": "https://zra-duty-calc.vercel.app/frame-preview.png",
     "buttonTitle": "Calculate Import Duty",
-    "splashImageUrl": "https://t3chpirat3.github.io/zra-duty-calc/splash-icon.png",
+    "splashImageUrl": "https://zra-duty-calc.vercel.app/splash-icon.png",
     "splashBackgroundColor": "#1e3a8a",
     "primaryCategory": "finance",
     "tags": ["zambia", "zra", "import", "duty", "tax", "finance", "vehicle"]

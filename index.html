@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ZRA Vehicle Tariff Estimator 2025/2026</title>
   <meta property="og:title" content="ZRA Vehicle Tariff Estimator 2025/2026" />
-  <meta property="og:image" content="https://t3chpirat3.github.io/zra-duty-calc/frame-preview.png" />
-  <meta property="og:url" content="https://t3chpirat3.github.io/zra-duty-calc" />
-  <meta name="fc:miniapp" content='{"version":"1","imageUrl":"https://t3chpirat3.github.io/zra-duty-calc/frame-preview.png","button":{"title":"Calculate Import Duty","action":{"type":"launch_frame","name":"ZRA Duty Calc","url":"https://t3chpirat3.github.io/zra-duty-calc","splashImageUrl":"https://t3chpirat3.github.io/zra-duty-calc/splash-icon.png","splashBackgroundColor":"#1e3a8a"}}}' />
-  <meta name="fc:frame" content='{"version":"1","imageUrl":"https://t3chpirat3.github.io/zra-duty-calc/frame-preview.png","button":{"title":"Calculate Import Duty","action":{"type":"launch_frame","name":"ZRA Duty Calc","url":"https://t3chpirat3.github.io/zra-duty-calc","splashImageUrl":"https://t3chpirat3.github.io/zra-duty-calc/splash-icon.png","splashBackgroundColor":"#1e3a8a"}}}' />
+  <meta property="og:image" content="https://zra-duty-calc.vercel.app/frame-preview.png" />
+  <meta property="og:url" content="https://zra-duty-calc.vercel.app" />
+  <meta name="fc:miniapp" content='{"version":"1","imageUrl":"https://zra-duty-calc.vercel.app/frame-preview.png","button":{"title":"Calculate Import Duty","action":{"type":"launch_frame","name":"ZRA Duty Calc","url":"https://zra-duty-calc.vercel.app","splashImageUrl":"https://zra-duty-calc.vercel.app/splash-icon.png","splashBackgroundColor":"#1e3a8a"}}}' />
+  <meta name="fc:frame" content='{"version":"1","imageUrl":"https://zra-duty-calc.vercel.app/frame-preview.png","button":{"title":"Calculate Import Duty","action":{"type":"launch_frame","name":"ZRA Duty Calc","url":"https://zra-duty-calc.vercel.app","splashImageUrl":"https://zra-duty-calc.vercel.app/splash-icon.png","splashBackgroundColor":"#1e3a8a"}}}' />
   <meta name="base:app_id" content="69a20809ca3e464d01070985" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -303,7 +303,7 @@
             <h3 class="text-sm font-semibold text-amber-900 mb-2">ZRA Contact</h3>
             <div class="space-y-1 text-xs text-amber-800">
               <div>&#128222; 4111</div>
-              <div>&#9993;&#65039; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a5c4c1d3ccc6c0e5dfd7c48bcad7c28bdfc8">[email&#160;protected]</a></div>
+              <div>&#9993;&#65039; advice&#64;zra&#46;org&#46;zm</div>
               <div>&#127760; www.zra.org.zm</div>
             </div>
           </div>
@@ -317,7 +317,7 @@
     <div class="container mx-auto px-4 text-center text-xs">ZRA Vehicle Tariff Estimator 2025/2026 &middot; Zambia Revenue Authority</div>
   </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 var CARBON={'0-1500':123.20,'1501-2000':246.40,'2001-3000':352.00,'3001+':484.00};
 var T={
 '2-5':{
@@ -535,8 +535,14 @@ if(s.seats&&sL[s.seats])parts.push(sL[s.seats]);
 if(s.vdp)parts.push('VDP ZMW '+parseInt(s.vdp).toLocaleString());
 if(r.mode==='cif')parts.push('CIF USD '+Number(s.cifUSD).toLocaleString());
 var fmt=function(n){return 'ZMW '+n.toLocaleString('en-ZM',{minimumFractionDigits:2,maximumFractionDigits:2});};
-var lines=['Zambia Vehicle Import Duty Estimate','(ZRA 2025/2026)','',parts.join(' / '),''];
+var lines=['Zambia Vehicle Import Duty Estimate','(ZRA 2025)','',parts.join(' / '),''];
 if(r.mode==='cif'){lines.push('Customs: '+fmt(r.cd));lines.push('Excise: '+fmt(r.ed));lines.push('VAT: '+fmt(r.vat));if(r.carbon>0)lines.push('Carbon Surtax: '+fmt(r.carbon));}
 else{lines.push('Base Duties: '+fmt(r.base));if(r.carbon>0)lines.push('Carbon Surtax: '+fmt(r.carbon));}
 lines.push('TOTAL: '+fmt(r.total));lines.push('','Estimate only - verify with a clearing agent','#Zambia #ZRA #ImportDuty');
-var text=lines.join('\n'
+var text=lines.join('\n');
+window.open('https://warpcast.com/~/compose?text='+encodeURIComponent(text),'_blank');
+if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(text).catch(function(){});
+}
+</script>
+</body>
+</html>
