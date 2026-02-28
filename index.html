@@ -9,7 +9,35 @@
   <meta property="og:url" content="https://zra-duty-calc.vercel.app" />
   <meta name="fc:miniapp" content='{"version":"1","imageUrl":"https://zra-duty-calc.vercel.app/frame-preview.png","button":{"title":"Calculate Import Duty","action":{"type":"launch_frame","name":"ZRA Duty Calc","url":"https://zra-duty-calc.vercel.app","splashImageUrl":"https://zra-duty-calc.vercel.app/splash-icon.png","splashBackgroundColor":"#1e3a8a"}}}' />
   <meta name="fc:frame" content='{"version":"1","imageUrl":"https://zra-duty-calc.vercel.app/frame-preview.png","button":{"title":"Calculate Import Duty","action":{"type":"launch_frame","name":"ZRA Duty Calc","url":"https://zra-duty-calc.vercel.app","splashImageUrl":"https://zra-duty-calc.vercel.app/splash-icon.png","splashBackgroundColor":"#1e3a8a"}}}' />
-  <meta name="base:app_id" content="69a20809ca3e464d01070985" />
+  <!-- 
+    =========================================================
+    ZRA Vehicle Tariff Estimator 2025/2026
+    Built by t3chpirat3 | Zambia | February 2026
+    https://github.com/t3chpirat3/zra-duty-calc
+    =========================================================
+    🥚 Easter Egg #1: 
+    This calculator was born in Zambia, debugged at ungodly 
+    hours, and survived no less than 3 duplication bugs, 
+    a Cloudflare email-obfuscation curse (multiple times 👀),
+    a GitHub Pages .well-known nightmare, and a wrong SDK call
+    that had the splash screen frozen for an embarrassing 
+    amount of time. It's battle-hardened. Respect it.
+
+    🥚 Easter Egg #2:
+    If you're reading this and you copied this code without 
+    crediting t3chpirat3... the ZRA has your vehicle details.
+    Just saying. 😂
+
+    🥚 Easter Egg #3:
+    The carbon surtax band alignment fix on 2500cc engines 
+    took longer than anyone would like to admit. You're welcome.
+
+    🥚 Easter Egg #4:
+    "No rest for the wicked." — t3chpirat3, Feb 2026 ☠️
+    =========================================================
+  -->
+  <meta name="author" content="t3chpirat3" />
+  <meta name="built-in" content="Zambia, February 2026" />
   <script src="https://cdn.jsdelivr.net/npm/@farcaster/frame-sdk/dist/index.min.js"></script>
   <script>
     window.addEventListener('load', function() {
@@ -324,6 +352,26 @@
   </footer>
 
 <script>
+// =========================================================
+// ZRA Vehicle Tariff Estimator 2025/2026
+// © 2026 t3chpirat3 | MIT License
+// Built in Zambia. Fuelled by stubbornness and late nights.
+// =========================================================
+
+// 🥚 Easter Egg #5:
+// The specific duty rates in this calculator came from an 
+// actual ZRA tariff PDF. Every. Single. Number. Was manually
+// verified. If you find an error, it's ZRA's fault, not ours.
+
+// 🥚 Easter Egg #6:
+// CARBON surtax bands: 0-1500cc | 1501-2000cc | 2001-3000cc | 3001cc+
+// This took an embarrassing number of sessions to get right.
+// The 2500cc engine falls in the 2001-3000 band. Don't forget it.
+
+// 🥚 Easter Egg #7:
+// If you're wondering why the email is HTML-encoded...
+// Cloudflare kept obfuscating it and breaking the entire app.
+// Three. Times. Never again.
 var CARBON={'0-1500':123.20,'1501-2000':246.40,'2001-3000':352.00,'3001+':484.00};
 var T={
 '2-5':{
